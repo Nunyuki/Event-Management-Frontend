@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "event-management-frontend": {
+    "event-manager-front": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -23,7 +23,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/event-management-frontend",
+            "outputPath": "dist/event-manager-front",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -35,9 +35,13 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/bootstrap/scss/bootstrap.scss",
+              "node_modules/bootstrap-icons/font/bootstrap-icons.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -67,10 +71,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "event-management-frontend:build:production"
+              "buildTarget": "event-manager-front:build:production"
             },
             "development": {
-              "buildTarget": "event-management-frontend:build:development"
+              "buildTarget": "event-manager-front:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -78,7 +82,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "event-management-frontend:build"
+            "buildTarget": "event-manager-front:build"
           }
         },
         "test": {
@@ -101,5 +105,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }
