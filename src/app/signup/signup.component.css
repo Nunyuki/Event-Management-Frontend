@@ -1,0 +1,223 @@
+.web-name {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 1%;
+  top: 3%;
+  padding: 0 6px;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.wakuwaku {
+  width: 360px;
+  height: 55px;
+  font-weight: 400;
+  font-size: 50px;
+  line-height: 55px;
+  color: #FFFFFF;
+  opacity: 0.7;
+  font-weight: lighter;
+}
+
+.wakuwaku-2 {
+  width: 235px;
+  height: 27px;
+  font-weight: 400;
+  font-size: 25px;
+  line-height: 27px;
+  color: #FFFFFF;
+  opacity: 0.7;
+  font-weight: lighter;
+}
+
+.inscription-box {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  position: absolute;
+  left: 27%;
+  right: 27%;
+  top: 17%;
+}
+
+.rectangle {
+  position: absolute;
+  width: 460px;
+  height: 535px;
+  left: 24px;
+  opacity: 0.25;
+  border: 5px solid #FFFFFF;
+  border-radius: 70px;
+}
+
+.inscription-element {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 400px;
+  height: 465px;
+  left: 55px;
+  top: 70px;
+  gap: 45px;
+}
+
+.profil {
+  position: absolute;
+  top : -30px;
+  width: 60px;
+  height: 60px;
+  left: 175px;
+  opacity: 0.7;
+  background: url(../../assets/login-icon.png);
+  background-size: cover;
+}
+
+.intro-text {
+  width: 335px;
+  height: 20px;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 25px;
+  text-align: center;
+  color: #FFFFFF;
+  margin-bottom: -10px;
+}
+
+.inscription-data {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 335px;
+  height: 139px;
+  gap: 15px;
+  opacity: 0.7;
+}
+
+.input-field::placeholder {
+  color: #c71f7c; 
+  opacity: 1; 
+}
+
+.inscription-button-back,
+.inscription-button-next {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 7px 0px;
+    width: 140px;
+    background: rgba(6, 68, 112, 0.7);
+    border-radius: 20px;
+    flex: none;
+    flex-grow: 0;
+    color: #FFFFFF;
+    font-size: 20px;
+    line-height: 22px;
+    text-align: center;
+    cursor: pointer;
+    border: none;
+}
+
+.inscription-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 7px 28px;
+  gap: 40px;
+  bottom: 100;
+  width: 320px;
+  height: 35px;
+  flex: none;
+  flex-grow: 0;
+  margin-top: 110px;
+  margin-bottom: -10px;
+}
+
+.inscription {
+  position: relative;
+  width: 1100px;
+  height: 750px;
+  z-index: 0;
+}
+
+label {
+  width: 335px;
+  height: 20px;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 20px;
+  text-align: center;
+  color: #FFFFFF;
+}
+
+.input-field {
+  width: 335px;
+  height: 37px;
+  background: #D9D9D9;
+  border-radius: 20px;
+  border: none;
+  padding: 10px;
+}
+
+.errors-message {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 355px;
+  left: 27px;;
+  gap: 5px;
+  width: 350px;
+  color: #ef8fc4;
+}
+
+.check-password {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 500px;
+  margin-bottom: -137px;
+  color: #FFFFFF;
+  gap : 5px;
+}
+
+.password {
+  display: flex;
+  gap:30px;
+}
+
+.left-column {
+  font-size: 14px;
+}
+
+.right-column {
+  font-size: 14px;
+}
+
+.error-message {
+  color: inherit; 
+}
+
+.error {
+  color: #ff4848; 
+}
+
+.errors-message-2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: -5px;
+  top: 263px;
+  gap: 5px;
+  width: 400px;
+  color: #ef8fc4;
+}

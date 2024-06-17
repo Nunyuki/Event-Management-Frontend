@@ -1,0 +1,34 @@
+<div class="web-name" routerLink="/home">
+  <div class="wakuwaku">わくわくていこく</div>
+  <div class="wakuwaku-2">WakuWaku Teikoku</div>
+</div>
+<div class="connexion">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="connexion-box">
+      <div class="rectangle"></div>
+      <div class="connexion-element">
+        <div class="profil"></div>
+
+        <div class="intro-text">Connectez-vous, amusez-vous et poursuivez l'aventure!</div>
+          
+        <div class="connexion-data">
+          <label for="pseudo">Pseudo</label>
+          <input type="text" id="pseudo" class="input-field" formControlName="pseudo" [placeholder]="pseudo.invalid && pseudo.touched ? 'Pseudo requis' : ''" />
+          <label for="password">Mot de passe</label>
+          <input type="password" id="password" class="input-field" formControlName="password" [placeholder]="password.invalid && password.touched ? 'Mot de passe requis' : ''"/>
+          <div *ngIf="errorMessage" class="errors-message">{{ errorMessage }}</div>
+        </div>
+
+        <div class="login-button">
+          <button class="start-button" type="submit">Commencer</button>
+        </div>
+        
+        <div class="new-user">
+          <div class="not-registered">Pas encore inscrit ?</div>
+          <div class="join-us" routerLink="/signup">Rejoignez-nous pour une aventure sans fin!</div>
+        </div>
+
+      </div>
+    </div>
+  </form>
+</div>

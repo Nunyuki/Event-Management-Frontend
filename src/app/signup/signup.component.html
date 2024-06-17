@@ -1,0 +1,73 @@
+<div class="web-name" routerLink="/home">
+  <div class="wakuwaku">わくわくていこく</div>
+  <div class="wakuwaku-2">WakuWaku Teikoku</div>
+</div>
+<div class="inscription">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div *ngIf="currentStep === 1">
+      <div class="inscription-box">
+        <div class="rectangle"></div>
+        <div class="inscription-element">
+          <div class="profil"></div>
+
+          <div class="intro-text">Prêt à rejoindre l’aventure ?</div>
+            
+          <div class="inscription-data">
+            <label for="name">Nom et Prénom</label>
+            <input type="text" id="name" class="input-field" formControlName="name" [placeholder]="name.invalid && name.touched ? 'Nom requis' : ''" />
+            <label for="pseudo">Pseudo</label>
+            <input type="text" id="pseudo" class="input-field" formControlName="pseudo" [placeholder]="pseudo.invalid && pseudo.touched ? 'Pseudo requis' : ''" />
+            <label for="email">Email</label>
+            <input type="email" id="email" class="input-field" formControlName="email" [placeholder]="email.invalid && email.touched ? 'Email requis' : ''"/>
+            <div *ngIf="email.errors?.['email'] && email.value!=''" class="errors-message">Email invalide</div>
+            <div *ngIf="errorMessage" class="errors-message">{{ errorMessage }}</div>
+          </div>
+
+          <div class="inscription-buttons">
+            <button class="inscription-button-back" (click)="previousStep()">Retour</button>
+            <button class="inscription-button-next" (click)="nextStep()">Suivant</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="currentStep === 2">
+      <div class="inscription-box">
+        <div class="rectangle"></div>
+        <div class="inscription-element">
+          <div class="profil"></div>
+
+          <div class="intro-text">Prêt à rejoindre l’aventure ?</div>
+            
+          <div class="inscription-data">
+            <label for="password">Mot de passe</label>
+            <input type="password" id="password" class="input-field" formControlName="password" [placeholder]="password.invalid && password.touched ? 'Mot de passe requis' : ''"/>
+            <label for="confirmPassword">Confirmez votre mot de passe</label>
+            <input type="password" id="confirmPassword" class="input-field" formControlName="confirmPassword" [placeholder]="confirmPassword.invalid && confirmPassword.touched ? 'Confirmation du mot de passe requis' : ''"/>
+            <div *ngIf="form.errors?.['passwordMismatch'] && form.touched" class="errors-message-2">Les mots de passe ne correspondent pas</div>
+            <div *ngIf="errorMessage" class="errors-message-2">{{ errorMessage }}</div>
+          </div>
+
+          <div class="check-password">
+            <div class="label">Votre mot de passe doit contenir :<br></div>
+            <div class="password">
+              <div class="left-column">
+                <div class="error-message" [ngClass]="{'error': password.errors?.['minlength'] && password.touched}">Au moins 8 caractères</div>
+                <div class="error-message" [ngClass]="{'error': password.errors?.['missingLowerCase'] && password.touched}">Une minuscule</div>
+                <div class="error-message" [ngClass]="{'error': password.errors?.['missingUpperCase'] && password.touched}">Une majuscule</div>                
+              </div>
+              <div class="right-column">
+                <div class="error-message" [ngClass]="{'error': password.errors?.['missingSpecialCharacter'] && password.touched}">Un caractère spécial</div>                
+                <div class="error-message" [ngClass]="{'error': password.errors?.['missingNumeric'] && password.touched}">Un chiffre</div>                
+              </div>
+            </div>
+          </div>
+
+          <div class="inscription-buttons">
+            <button class="inscription-button-back" (click)="previousStep()">Retour</button>
+            <button class="inscription-button-next" type="submit">C’est Parti !</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
