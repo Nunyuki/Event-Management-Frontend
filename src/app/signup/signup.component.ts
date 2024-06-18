@@ -32,7 +32,7 @@ export class SignupComponent {
       Validators.required, Validators.minLength(4),
     ]],
 
-    name: ['', Validators.required],}, 
+    username: ['', Validators.required],}, 
     
     { validator: passwordMatchValidator });
 
@@ -47,8 +47,8 @@ export class SignupComponent {
   get confirmPassword() {
     return this.form.controls['confirmPassword'];
   }
-  get name() {
-    return this.form.controls['name'];
+  get username() {
+    return this.form.controls['username'];
   }
   get pseudo() {
     return this.form.controls['pseudo'];
@@ -56,13 +56,13 @@ export class SignupComponent {
 
   nextStep() {
     this.errorMessage = null;
-    if (this.currentStep < 2 && this.name.valid && this.pseudo.valid && this.email.valid) {
+    if (this.currentStep < 2 && this.username.valid && this.pseudo.valid && this.email.valid) {
       this.currentStep++;
     } else {
       if (this.pseudo.touched && this.pseudo.invalid) {
         this.errorMessage = 'Pseudo invalide (4 caractères minimum)';
       }
-      this.name.markAsTouched();
+      this.username.markAsTouched();
       this.pseudo.markAsTouched();
       this.email.markAsTouched();
     }

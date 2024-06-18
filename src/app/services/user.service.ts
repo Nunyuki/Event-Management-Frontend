@@ -30,4 +30,8 @@ export class UserService {
     login(pseudo: string, password: string): Observable<any> {
         return this.http.post<any>(`${this.usersUrl}/login`, { pseudo, password });
     }
+
+    checkPseudo(pseudo: string): Observable<boolean> {
+      return this.http.get<boolean>(`${this.usersUrl}/users/check-pseudo/${pseudo}`);
+    }
 }
