@@ -5,7 +5,7 @@
   height: 45px;
   right: 30px;
   opacity: 0.7;
-  background: url(../../assets/login-icon.png);
+  background: url(../../assets/icons/login-icon.png);
   background-size: cover;
   cursor: pointer;
 }
@@ -90,20 +90,20 @@
 .image-1 {
   left: 480px;
   top: 375px;
-  background: url('../../assets/accueil-1.png');
+  background: url('../../assets/design/accueil-1.png');
   background-size: cover;
 }
 
 .image-2 {
   left: 60px;
   top: 375px;
-  background: url('../../assets/accueil-2.png');
+  background: url('../../assets/design/accueil-2.png');
   background-size: cover;
 }
 
 .image-3 {
   left: 900px;
   top: 375px;
-  background: url('../../assets/accueil-3.png');
+  background: url('../../assets/design/accueil-3.png');
   background-size: cover;
 }
