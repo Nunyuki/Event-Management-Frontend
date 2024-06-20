@@ -14,7 +14,7 @@ export class HomeComponent {
   ngOnInit(): void {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser') as string);
     if (this.currentUser) {
-      console.log('User is already logged in', this.currentUser);
+      console.log('L\'utilisateur est déjà connecté', this.currentUser);
       this.router.navigate(['/mainPage']);
     }
   }

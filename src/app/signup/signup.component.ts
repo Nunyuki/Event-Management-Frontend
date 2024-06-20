@@ -3,7 +3,7 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { UserService } from '../services/user.service';
 import { User } from '../data/user';
 import { Router } from '@angular/router';
-import { hasLowerCase, hasNumeric, hasSpecialCharacter, hasUpperCase, passwordMatchValidator } from '../validators/text.validator';
+import { hasLowerCase, hasNumeric, hasSpecialCharacter, hasUpperCase, emailValidator, passwordMatchValidator } from '../validators/text.validator';
 
 @Component({
   selector: 'app-signup',
@@ -17,10 +17,8 @@ export class SignupComponent {
 
   form: FormGroup = this.fb.group({
 
-    email: ['', {
-      validators: [Validators.required, Validators.email, Validators.minLength(8)],
-      updateOn: 'blur',
-    }],
+    email: ['', [Validators.required, Validators.minLength(8), emailValidator()
+    ]],
 
     password: ['', [
       Validators.required, Validators.minLength(8), hasUpperCase(), hasLowerCase(), hasNumeric(),hasSpecialCharacter()

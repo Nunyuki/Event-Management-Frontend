@@ -1,57 +1,64 @@
 <div class="profil"></div>
 
-<div class="create-event">
-  <div class="create-text">Créer</div>
-  <div class="create-button"></div>
+<div class="create-event" routerLink="/createEvent">
+    <div class="create-text">Créer</div>
+    <div class="create-button"></div>
 </div>
 
 <div class="main-page">
     <div class="web-name">
-      <div class="wakuwaku">わくわくていこく</div>
-      <div class="wakuwaku-2">WakuWaku Teikoku</div>
+        <div class="wakuwaku">わくわくていこく</div>
+        <div class="wakuwaku-2">WakuWaku Teikoku</div>
     </div>
 
-      <div class="search-section">
+    <div class="search-section">
         <div class="search-bar">
-          <label for="search-input" class="visually-hidden">Recherche</label>
-          <input type="text" class="search-input">
-          <div class="filter-icon" (click)="toggleFilterBox()"></div>
-          <div class="search-icon"></div>
+            <label for="search-input" class="visually-hidden">Recherche</label>
+            <input type="text" class="search-input">
+            <div class="filter-icon" (click)="toggleFilterBox()"></div>
+            <div class="search-icon"></div>
         </div>
         <div class="slogan-container">
-          <div class="slogan-text">
-            <div class="slogan" routerLink="/categoryPage">Des expériences incroyables, à portée de clic !</div>
-            <div class="icon"></div>
-          </div>
+            <div class="slogan-text">
+                <div class="slogan" routerLink="/allCategoryEvent">Des expériences incroyables, à portée de clic !</div>
+                <div class="icon"></div>
+            </div>
         </div>
-      </div>
-  <div class="filter-box" *ngIf="isFilterBoxVisible">
-      <div class="filter-background"></div>
-      <div class="filter-options">
-          <div class="filter-item">
-              <input type="checkbox" id="category" class="checkbox">
-              <label for="category" class="filter-label">Categorie</label>
-          </div>
-          <div class="filter-item">
-              <input type="checkbox" id="event" class="checkbox">
-              <label for="event" class="filter-label">Evènement</label>
-          </div>
-          <div class="filter-item">
-              <input type="checkbox" id="organizer" class="checkbox">
-              <label for="organizer" class="filter-label">Organisateur</label>
-          </div>
-          <div class="filter-item">
-              <input type="checkbox" id="date" class="checkbox">
-              <label for="date" class="filter-label">Date</label>
-          </div>
-          <div class="filter-item">
-              <input type="checkbox" id="location" class="checkbox">
-              <label for="location" class="filter-label">Lieu</label>
-          </div>
-          <div class="filter-item">
-              <input type="checkbox" id="available" class="checkbox">
-              <label for="available" class="filter-label">Disponible</label>
-          </div>
-      </div>
-  </div>
+    </div>
+
+    <div class="filter-box" *ngIf="isFilterBoxVisible">
+        <div class="filter-background"></div>
+        <div class="filter-options">
+            <div class="filter-item">
+                <input type="checkbox" id="category" class="checkbox" [checked]="selectedFilter === 'category'"
+                    (change)="onFilterChange('category')">
+                <label for="category" class="filter-label">Categorie</label>
+            </div>
+            <div class="filter-item">
+                <input type="checkbox" id="event" class="checkbox" [checked]="selectedFilter === 'event'"
+                    (change)="onFilterChange('event')">
+                <label for="event" class="filter-label">Evènement</label>
+            </div>
+            <div class="filter-item">
+                <input type="checkbox" id="organizer" class="checkbox" [checked]="selectedFilter === 'organizer'"
+                    (change)="onFilterChange('organizer')">
+                <label for="organizer" class="filter-label">Organisateur</label>
+            </div>
+            <div class="filter-item">
+                <input type="checkbox" id="date" class="checkbox" [checked]="selectedFilter === 'date'"
+                    (change)="onFilterChange('date')">
+                <label for="date" class="filter-label">Date</label>
+            </div>
+            <div class="filter-item">
+                <input type="checkbox" id="location" class="checkbox" [checked]="selectedFilter === 'location'"
+                    (change)="onFilterChange('location')">
+                <label for="location" class="filter-label">Lieu</label>
+            </div>
+            <div class="filter-item">
+                <input type="checkbox" id="available" class="checkbox" [checked]="selectedFilter === 'available'"
+                    (change)="onFilterChange('available')">
+                <label for="available" class="filter-label">Disponible</label>
+            </div>
+        </div>
+    </div>
 </div>

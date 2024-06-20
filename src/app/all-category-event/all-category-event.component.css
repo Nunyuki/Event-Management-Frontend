@@ -1,0 +1,389 @@
+.web-name {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 1%;
+  top: 3%;
+  padding: 0 6px;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.wakuwaku {
+  width: 360px;
+  height: 55px;
+  font-weight: 400;
+  font-size: 50px;
+  line-height: 55px;
+  color: #FFFFFF;
+  opacity: 0.7;
+  font-weight: lighter;
+}
+
+.wakuwaku-2 {
+  width: 235px;
+  height: 27px;
+  font-weight: 400;
+  font-size: 25px;
+  line-height: 27px;
+  color: #FFFFFF;
+  opacity: 0.7;
+  font-weight: lighter;
+}
+
+.profil {
+  top : 20px;
+  position: absolute;
+  width: 45px;
+  height: 45px;
+  right: 30px;
+  opacity: 0.7;
+  background: url(../../assets/icons/login-icon.png);
+  background-size: cover;
+  cursor: pointer;
+}
+
+.search {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 5px 5px;
+  gap: 10px;
+  position: absolute;
+  width: 400px;
+  height: 35px;
+  right: 105px;
+  top: 27px;
+  background: #D9D9D9;
+  opacity: 0.7;
+  border-radius: 50px;
+  z-index: 1;
+}
+
+.search-input {
+  width: 77%;
+  height: 90%;
+  background: none;
+  border: none;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 20px;
+  color: #000000;
+  outline: none;
+}
+
+.search-icon {
+  width: 27px;
+  height: 27px;
+  background: url('../../assets/icons/search-icon.png');
+  background-size: cover;
+  cursor: pointer;
+}
+
+.filter-icon {
+  width: 25px;
+  height: 25px;
+  background: url('../../assets/icons/filter-icon.png');
+  background-size: cover;
+  cursor: pointer;
+}
+
+.create-event {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 7px 20px;
+  gap: 15px;
+  position: absolute;
+  width: 150px;
+  height: 35px;
+  right: 525px;
+  top: 27px;
+  background: rgba(6, 68, 112, 0.7);
+  border-radius: 20px;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.create-text {
+  width: 65px;
+  height: 26px;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 26px;
+  text-align: center;
+  color: #FFFFFF;
+}
+
+.create-button {
+  width: 25px;
+  height: 25px;
+  background: url(../../assets/icons/create-icon.png);
+  background-size: cover;
+}
+
+.page {
+  position: absolute;
+  width: 1280px;
+  height: 832px;
+  left: 50px;
+  top: 0px;
+}
+
+.switch {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 30px;
+  isolation: isolate;
+  position: absolute;
+  width: 440px;
+  height: 40px;
+  left: 0px;
+  top: 168px;
+}
+
+.category-rect, .event-rect {
+  width: 175px;
+  height: 40px;
+  opacity: 0.7;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.active {
+  background: #BA63AA;
+}
+
+.inactive {
+  background: rgba(162, 187, 204, 0.7);
+}
+
+.categories, .evenements{
+  position: absolute;
+  color: #FFFFFF;
+  width: 140px;
+  height: 25px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 25px;
+  line-height: 27px;
+  cursor: pointer;
+  top: 6px;
+
+}
+
+.categories {
+  left: 23px;
+}
+
+.evenements {
+  left: 217px;
+}
+
+.filter-icon2 {
+  width: 40px;
+  height: 40px;
+  background: url('../../assets/icons/filter-icon2.png');
+  background-size: cover;
+}
+
+.display-category, .display-event{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px;
+  gap: 50px;
+  isolation: isolate;
+  position: absolute;
+  width: 1280px;
+  height: auto;
+  left: 180px;
+  top: 282px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.image {
+  width: 350px;
+  height: 220px;
+  filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 1));
+  border-radius: 50px;
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 40px;
+  cursor: pointer;
+}
+
+.category-label {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 25px;
+  line-height: 27px;
+  color: #FFFFFF;
+  text-shadow:
+      1px 1px 2px #285A95,
+      -1px -1px 2px #285A95,
+      -1px 1px 2px #285A95,
+      1px -1px 2px #285A95,
+      2px 2px 4px #285A95,
+      -2px -2px 4px #285A95,
+      -2px 2px 4px #285A95,
+      2px -2px 4px #285A95;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  margin-bottom: 25px;
+  margin-left: 50px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.event-image {
+  width: 320px;
+  height: 210px;
+  background-size: cover;
+  background-position: center;
+  filter: drop-shadow(0px 4px 10px);
+  border-radius: 48px;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.event-details {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 30px;
+  width: 1200px;
+  height: 215px;
+  border: 3px solid rgba(255, 255, 255, 0.7);
+  border-radius: 50px;
+}
+
+.event-data {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  gap: 20px;
+  width: 800px;
+  height: 210px;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
+.event-name {
+  width: 800px;
+  height: 35px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 35px;
+  text-align: center;
+  color: #FFFFFF;
+  opacity: 0.7;
+}
+
+
+.category-line {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 2px 15px;
+  width: 600px;
+  height: 22px;
+  background: #BA63AA;
+  border-radius: 20px;
+}
+
+.category-name {
+  width: 250px;
+  height: 18px;
+  font-family: 'KoPub Batang';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 10px;
+  color: #FFFFFF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.event-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 7px;
+  margin: 0 auto;
+  width: 400px;
+  height: 100px;
+}
+
+.adress, .date{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  width: 400px;
+  height: 40px;
+}
+
+.adress-icon {
+  width: 20px;
+  height: 25px;
+  background: url('../../assets/icons/location-icon.png');
+  background-size: cover;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.event-location, .event-date{
+  width: 400px;
+  height: 20px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 20px;
+  color: #FFFFFF;
+}
+
+.date .vector {
+  width: 25px;
+  height: 25px;
+  background: url('../../assets/icons/calendar-icon.png');
+  background-size: cover;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}

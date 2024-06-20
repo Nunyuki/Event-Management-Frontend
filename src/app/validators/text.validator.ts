@@ -56,6 +56,20 @@ export function hasSpecialCharacter(): ValidatorFn {
   };
 } 
 
+export function emailValidator(): ValidatorFn {
+  return (control: AbstractControl): ValidationErrors | null => {
+    const value = control.value;
+
+    if (!value) {
+      return null;
+    }
+
+    const isEmail = /^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,3}$/.test(value);
+
+    return !isEmail ? { invalidEmail: true } : null;
+  };
+}
+
 export function passwordMatchValidator(group: FormGroup): ValidationErrors | null {
   const password = group.get('password')?.value;
   const confirmPassword = group.get('confirmPassword')?.value;

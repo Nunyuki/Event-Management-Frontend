@@ -1,0 +1,63 @@
+<div class="web-name" routerLink="/mainPage">
+  <div class="wakuwaku">わくわくていこく</div>
+  <div class="wakuwaku-2">WakuWaku Teikoku</div>
+</div>
+
+<div class="profil" routerLink="/login"></div>
+
+<div class="create-event" routerLink="/createEvent">
+  <div class="create-text">Créer</div>
+  <div class="create-button"></div>
+</div>
+
+<div class="search">
+  <label for="search-input" class="visually-hidden">Recherche</label>
+  <input type="text" class="search-input">
+  <div class="search-icon"></div>
+  <div class="filter-icon"></div>
+</div>
+
+<div class="page">
+  <div class="switch">
+    <div class="category-rect"
+      [ngClass]="{ 'active': displayMode === 'categories', 'inactive': displayMode !== 'categories' }"></div>
+    <div class="event-rect" [ngClass]="{ 'active': displayMode === 'events', 'inactive': displayMode !== 'events' }">
+    </div>
+    <div class="categories" (click)="toggleDisplay('categories')">Categories</div>
+    <div class="evenements" (click)="toggleDisplay('events')">Evènements</div>
+    <div class="filter-icon2"></div>
+  </div>
+
+  <div class="display-category" *ngIf="displayMode === 'categories'">
+    <div class="row" *ngFor="let row of categoryRows">
+      <div class="col" *ngFor="let category of row">
+        <div class="image" [ngStyle]="{'background-image': 'url(../assets/categories/' + category.imagePath + '.png)'}">
+          <div class="category-label">{{ category.categoryName }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="display-event" *ngIf="displayMode === 'events'">
+    <div class="event-details" *ngFor="let event of events">
+      <img class="event-image" *ngIf="event.image" [src]="'data:image/jpeg;base64,' + event.image" alt="Event Image">
+      <div class="event-data">
+        <div class="event-name">{{ event.eventName }}</div>
+        <div class="category-line">
+          <div class="category-name">{{ event.categoryName }}</div>
+        </div>
+        
+        <div class="event-info">
+          <div class="adress">
+            <div class="adress-icon"></div>
+            <div class="event-location">{{ event.eventLocation }}</div>
+          </div>
+          <div class="date">
+            <div class="vector"></div>
+            <div class="event-date">{{ formatDate(event.eventDate) }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

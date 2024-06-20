@@ -1,0 +1,75 @@
+<div class="name" routerLink="/mainPage">
+  <div class="title-japanese">わくわくていこく</div>
+  <div class="title-english">WakuWaku Teikoku</div>
+</div>
+<div class="vector-top-right"></div>
+
+<div class="create-event">
+  <div class="component-1">
+      <form [formGroup]="form" (ngSubmit)="createEvent()">
+          <div class="add-photo" (click)="fileInput.click()">
+              <div class="photo-icon"></div>
+              <input type="file" #fileInput (change)="onFileSelected($event)" style="display: none;">
+            </div>
+            <img *ngIf="selectedImageBase64" [src]="selectedImageBase64" class="preview-image">
+            
+          <div class="frame-25">
+              <div class="event-name">
+                  <label for="event-name">Nom de l’événement</label>
+                  <div class="rectangle-2">
+                      <input id="event-name" class="event-name" type="text" formControlName="eventName" />
+                  </div>
+              </div>
+              <div class="description">
+                  <label for="description">Description</label>
+                  <div class="rectangle-4">
+                      <textarea class="description" formControlName="eventDescription"></textarea>
+                  </div>
+              </div>
+              <div class="location">
+                  <label for="location">Location</label>
+                  <div class="rectangle-2">
+                      <input id="location" class="location" type="text" formControlName="eventLocation" />
+                  </div>
+              </div>
+              <div class="date">
+                  <label for="date">Date & Heure</label>
+                  <div class="rectangle-2">
+                      <input id="date" class="date" type="text" formControlName="date" placeholder="yyyy - MM - dd">
+                  </div>
+                  <div class="rectangle-3">
+                      <input id="heure" class="heure" type="text" formControlName="heure" placeholder="hh : mm">
+                  </div>
+              </div>
+              <div class="place">
+                  <label for="place-disponible">Place disponible</label>
+                  <div class="rectangle-2">
+                      <input id="place-disponible" class="place-disponible" type="number"
+                          formControlName="maxCapacity">
+                  </div>
+              </div>
+          </div>
+
+          <div class="list-category" (click)="toggleCategoryMenu()">
+              <div class="categories">Catégories</div>
+              <div class="polygon-1"></div>
+          </div>
+          <div *ngIf="showCategoryMenu" class="category-menu" [ngClass]="{ 'active': showCategoryMenu }">
+              <div class="category-item" *ngFor="let category of categories">
+                  <input type="radio" id="{{ category.id }}" [value]="category.categoryName"
+                      [checked]="selectedCategory === category.categoryName" formControlName="categoryName">
+                  <label for="{{ category.id }}">{{ category.categoryName }}</label>
+              </div>
+          </div>
+
+          <div class="create-category">
+              <div class="creer">Créer</div>
+              <div class="vector"></div>
+          </div>
+
+          <div class="create-event-btn">
+              <button class="share-event" type="submit">Partager mon événement</button>
+          </div>
+      </form>
+  </div>
+</div>

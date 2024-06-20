@@ -33,6 +33,7 @@ export class LoginComponent {
       this.userService.login(pseudo ?? '', password ?? '').subscribe({
         next: (response) => {
           console.log('Connexion réussie', response);
+          localStorage.setItem('currentUser', JSON.stringify(response));
           this.router.navigate(['/mainPage']);
         },
         error: (error) => {

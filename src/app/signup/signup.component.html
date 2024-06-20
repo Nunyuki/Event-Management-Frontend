@@ -19,7 +19,7 @@
             <input type="text" id="pseudo" class="input-field" formControlName="pseudo" [placeholder]="pseudo.invalid && pseudo.touched ? 'Pseudo requis' : ''" />
             <label for="email">Email</label>
             <input type="email" id="email" class="input-field" formControlName="email" [placeholder]="email.invalid && email.touched ? 'Email requis' : ''"/>
-            <div *ngIf="email.errors?.['email'] && email.value!=''" class="errors-message">Email invalide</div>
+            <div *ngIf="email.errors?.['invalidEmail']" class="errors-message">Email invalide</div>
             <div *ngIf="errorMessage" class="errors-message">{{ errorMessage }}</div>
           </div>
 

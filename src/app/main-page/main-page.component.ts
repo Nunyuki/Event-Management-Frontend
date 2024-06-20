@@ -6,10 +6,20 @@ import { Component, HostListener } from '@angular/core';
   styleUrls: ['./main-page.component.css']
 })
 export class MainPageComponent {
+
   isFilterBoxVisible: boolean = false;
+  selectedFilter: string | null = null;
 
   toggleFilterBox() {
     this.isFilterBoxVisible = !this.isFilterBoxVisible;
+  }
+
+  onFilterChange(filter: string) {
+    if (this.selectedFilter === filter) {
+      this.selectedFilter = null;
+    } else {
+      this.selectedFilter = filter;
+    }
   }
 
   @HostListener('document:click', ['$event'])
