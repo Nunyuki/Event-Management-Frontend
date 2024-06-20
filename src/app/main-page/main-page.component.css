@@ -120,13 +120,13 @@
 
 .search-input {
   margin-left: -100px;
-  width: 90%;
-  height: 90%;
+  width: 880px;
+  height: 30px;
   background: none;
   border: none;
   font-style: normal;
   font-weight: 400;
-  font-size: 25px;
+  font-size: 20px;
   color: #000000;
   outline: none;
 }
@@ -154,7 +154,6 @@
   flex-direction: column;
   align-items: flex-start;
   padding: 10px;
-  gap: 10px;
   width: 623px;
   height: 52px;
 }
@@ -164,7 +163,6 @@
   flex-direction: row;
   align-items: flex-start;
   padding: 0px;
-  gap: 14px;
   width: 603px;
   height: 32px;
 }
@@ -186,10 +184,13 @@
   cursor: pointer;
 }
 
-.icon {
-  width: 32px;
-  height: 32px;
+.click-icon {
+  width: 22px;
+  height: 22px;
   opacity: 0.7;
+  background: url(../../assets/icons/click-icon.png);
+  background-size: cover;
+  cursor: pointer;
 }
 
 .filter-box {
