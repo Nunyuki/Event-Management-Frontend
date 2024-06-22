@@ -17,6 +17,12 @@ import { CategoryService } from './services/category.service';
 import { EventService } from './services/event.service';
 import { CreateEventComponent } from './create-event/create-event.component';
 
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,11 +38,17 @@ import { CreateEventComponent } from './create-event/create-event.component';
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
+    MatDatepickerModule,
+    MatInputModule,
+    MatNativeDateModule,
+    MatSelectModule,
+    BrowserAnimationsModule,
   ],
   providers: [
     UserService,
     CategoryService,
     EventService,
+    { provide: MAT_DATE_LOCALE, useValue: 'fr-FR' } 
   ],
   bootstrap: [AppComponent]
 })

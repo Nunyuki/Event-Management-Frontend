@@ -34,13 +34,17 @@
       </div>
       <div class="date">
         <label for="date">Date & Heure</label>
-        <div class="rectangle-2">
-          <input id="date" class="date" type="text" formControlName="date" placeholder="yyyy - MM - dd">
-        </div>
+        <mat-form-field class="rectangle-2">
+          <input matInput [matDatepicker]="picker" formControlName="date" placeholder="yyyy-MM-dd">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        
         <div class="rectangle-3">
-          <input id="heure" class="heure" type="text" formControlName="heure" placeholder="hh : mm">
+          <input id="heure" class="heure" type="text" formControlName="heure" placeholder="hh:mm">
         </div>
-      </div>
+      </div>      
+      
       <div class="place">
         <label for="place-disponible">Place disponible</label>
         <div class="rectangle-2">
