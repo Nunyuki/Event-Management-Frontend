@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { EventService } from '../services/event.service';
@@ -19,6 +20,8 @@ export class CreateEventComponent {
   showCategoryMenu: boolean = false;
   selectedCategory: string | null = null;
 
+  errorMessage: string | null = null;
+
   form: FormGroup = this.fb.group({
     eventName: ['', Validators.required],
     eventDescription: ['', Validators.required],
@@ -33,7 +36,7 @@ export class CreateEventComponent {
     heure: ['', Validators.required],
   });
 
-  constructor(private fb: FormBuilder, private http: HttpClient, private eventService: EventService, private categoryService: CategoryService) {}
+  constructor(private router: Router, private fb: FormBuilder, private http: HttpClient, private eventService: EventService, private categoryService: CategoryService) {}
 
   ngOnInit(): void {
     this.categoryService.getCategories().subscribe({
@@ -126,17 +129,21 @@ export class CreateEventComponent {
       this.eventService.createEvent(updatedFormValue).subscribe({
         next: (response) => {
           console.log('Evènement créé avec succès', response);
+          this.router.navigate(['/allCategoryEvent'], { queryParams: { displayMode: 'events' } });
         },
         error: (error) => {
           console.log('Erreur lors de la création de l\'évènement', error);
+          this.errorMessage = 'Erreur lors de la création de l\'évènement';
         }
       });
     } else {
-      console.log('Formulaire invalide');
-      if (this.selectedImage) {
-        this.form.controls['image'].setValue(this.selectedImage.name);
-      }
-      console.log('Formulaire ', this.form.value);
+      console.log('Formulaire invalide', this.form.value);
+      this.errorMessage = 'Veuillez remplir tous les champs';
     }
+  }
+
+  logout() {
+    localStorage.removeItem('currentUser');
+    this.router.navigate(['/home']);
   }
 }

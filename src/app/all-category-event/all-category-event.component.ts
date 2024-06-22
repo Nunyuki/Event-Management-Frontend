@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import { format } from 'date-fns';
 import { fr } from 'date-fns/locale';
 import { CategoryService } from '../services/category.service';
@@ -20,13 +21,22 @@ export class AllCategoryEventComponent {
 
   events: any[] = [];
 
-  constructor(private categoryService: CategoryService, private eventService: EventService) {}
+  constructor(private router: Router, private activatedRoute: ActivatedRoute, private route: ActivatedRoute, private categoryService: CategoryService, private eventService: EventService) {}
 
   ngOnInit(): void {
+    this.activatedRoute.queryParams.subscribe(params => {
+      if (params['displayMode']) {
+        this.displayMode = params['displayMode'];
+      }
+      this.loadData();
+    });
+  }
+
+  loadData(): void {
     if (this.displayMode === 'categories') {
       this.categoryService.getCategories().subscribe({
         next: (data: Category[]) => {
-          console.log('Catégories récupérées', data)
+          console.log('Catégories récupérées', data);
           this.categories = data;
           this.categoryRows = this.chunk(this.categories, 3);
         },
@@ -37,7 +47,7 @@ export class AllCategoryEventComponent {
     } else {
       this.eventService.getEvents().subscribe({
         next: (data: any) => {
-          console.log('Evénements récupérés', data)
+          console.log('Evénements récupérés', data);
           this.events = data;
         },
         error: (error) => {
@@ -86,4 +96,8 @@ export class AllCategoryEventComponent {
     }
   }
 
+  logout() {
+    localStorage.removeItem('currentUser');
+    this.router.navigate(['/home']);
+  }
 }

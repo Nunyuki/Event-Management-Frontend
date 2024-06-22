@@ -7,14 +7,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-  currentUser: any;
-
   constructor(private router: Router) { }
 
   ngOnInit(): void {
-    this.currentUser = JSON.parse(localStorage.getItem('currentUser') as string);
-    if (this.currentUser) {
-      console.log('L\'utilisateur est déjà connecté', this.currentUser);
+    const currentUser = JSON.parse(localStorage.getItem('currentUser') as string);
+    if (currentUser) {
+      console.log('L\'utilisateur est déjà connecté', currentUser);
       this.router.navigate(['/mainPage']);
     }
   }

@@ -1,4 +1,5 @@
 import { Component, HostListener } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main-page',
@@ -9,6 +10,8 @@ export class MainPageComponent {
 
   isFilterBoxVisible: boolean = false;
   selectedFilter: string | null = null;
+
+  constructor(private router: Router) { }
 
   toggleFilterBox() {
     this.isFilterBoxVisible = !this.isFilterBoxVisible;
@@ -31,5 +34,10 @@ export class MainPageComponent {
     if (!isFilterIconClicked && !isFilterBoxClicked) {
       this.isFilterBoxVisible = false;
     }
+  }
+
+  logout() {
+    localStorage.removeItem('currentUser');
+    this.router.navigate(['/home']);
   }
 }
