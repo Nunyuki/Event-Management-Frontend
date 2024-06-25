@@ -34,9 +34,10 @@
       </div>
       <div class="date">
         <label for="date">Date & Heure</label>
-        <mat-form-field class="rectangle-2">
-          <input matInput [matDatepicker]="picker" formControlName="date" placeholder="yyyy-MM-dd">
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+
+        <mat-form-field>
+          <input matInput [matDatepicker]="picker" formControlName="date" placeholder="dd/MM/yyyy">
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
         
@@ -54,7 +55,7 @@
     </div>
 
     <div class="categories">
-      <div class="create-category">
+      <div class="create-category" (click)="toggleCreateCategoryForm()">
         <div class="creer">Créer</div>
         <div class="create-icon"></div>
       </div>
@@ -63,6 +64,21 @@
         <div class="list-icon"></div>
       </div>
     </div>
+
+    <form [formGroup]="formCategory" (ngSubmit)="createCategory()">
+      <div *ngIf="showCreateCategoryForm" class="creating-category">
+        <label for="creating-category-name">Nom de la catégorie</label>
+          <div class="creating-category-rectangle">
+            <input id="creating-category-name" class="creating-category-name" type="text" formControlName="categoryName" />
+          </div>
+        <div class="creating-category-add-photo" (click)="toggleCategoryImageSelector()">
+          <div class="creating-category-photo-icon"></div>
+          <img *ngIf="selectedCategoryImage" [src]="selectedCategoryImage" alt="Selected Category Image">
+        </div>
+        <button class="creating-category-button" type="submit">Ok</button>
+        <div *ngIf="categoryErrorMessage" class="category-errors-message">{{ categoryErrorMessage }}</div>
+      </div>
+    </form>
 
     <div *ngIf="showCategoryMenu" class="category-menu" [ngClass]="{ 'active': showCategoryMenu }">
       <div class="category-item" *ngFor="let category of categories">
@@ -78,4 +94,15 @@
       <button class="share-event" type="submit">Partager mon événement</button>
     </div>
   </form>
+</div>
+
+<div *ngIf="showCategoryImageSelector" class="category-image-selector">
+  <div class="category-image-selector-content">
+    <span class="close" (click)="toggleCategoryImageSelector()">&times;</span>
+    <div class="selector-image-grid">
+      <div *ngFor="let image of categoryImages" class="selector-image-item">
+        <img [src]="image" (click)="selectCategoryImage(image)" alt="Category Image">
+      </div>
+    </div>
+  </div>
 </div>

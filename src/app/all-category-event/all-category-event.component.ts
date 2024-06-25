@@ -96,8 +96,13 @@ export class AllCategoryEventComponent {
     }
   }
 
+  redirectToEventPage(event: Event): void {
+    this.router.navigate(['/eventPage'], { queryParams: { eventId: event.id } });
+  }
+
   logout() {
     localStorage.removeItem('currentUser');
     this.router.navigate(['/home']);
   }
+
 }

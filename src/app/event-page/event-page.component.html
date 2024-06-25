@@ -1,0 +1,70 @@
+<div class="web-name" routerLink="/mainPage">
+  <div class="wakuwaku">わくわくていこく</div>
+  <div class="wakuwaku-2">WakuWaku Teikoku</div>
+</div>
+<div class="vector-top-right">
+  <div class="search">
+      <div class="filter-icon"></div>
+      <div class="search-icon"></div>
+  </div>
+
+  <div class="create-event">
+      <div class="create-text">Créer</div> 
+      <div class="create-icon"></div>
+  </div>
+</div>
+
+<div class="event" routerLink="/eventPage">
+  <div class="component1">
+      <div class="background"></div>
+
+      <div class="category">
+          <div class="category-name"> {{ event.categoryName }} <!--Jeux vidéo--></div>
+      </div>
+      <div class="login"></div>
+      <div class="event-description">
+          <div class="event-title"> {{ event.eventName }} <!--Summoners War Tournois--></div>
+          <!-- <div class="event-text">Rejoignez le Mini Tournoi d'Arène World de Summoners War SWC ! Vous êtes passionné par Summoners War ? Participez à notre mini tournoi d'arène world et rencontrez d'autres invocateurs tout aussi dévoués ! C'est l'occasion parfaite pour faire de nouvelles connaissances, échanger des stratégies et peut-être même remporter des prix incroyables. Cet évènement est totalement gratuit, donc ne manquez pas cette chance unique de prouver vos compétences et de rejoindre une communauté de joueurs passionnés. Inscrivez-vous dès maintenant et préparez-vous pour des combats épiques !</div> -->
+          <div class="event-text">{{ event.eventDescription }}</div>
+      </div>
+      <!-- <div class="event-image"></div> -->
+      <img class="event-image" *ngIf="event.image" [src]="'data:image/jpeg;base64,' + event.image" alt="Event Image">
+      <div class="event-box">
+          <div class="event-info">
+              <div class="address">
+                  <div class="location-icon"></div>
+                  <div class="address-text">{{ event.eventLocation }}</div>
+              </div>
+              <div class="disponibility">
+                  <div class="inscription-icon"></div>
+                  <div class="participants">{{listRegistered.length}} inscriptions / {{event.maxCapacity}}</div>
+              </div>
+              <div class="date">
+                  <div class="date-icon"></div>
+                  <div class="date-text"> {{formatDate(event.eventDate)}} <!--Samedi 18 octobre 2024 14h00--></div>
+              </div>
+              <div class="createBy">
+                  <div class="creator-icon"></div>
+                  <div class="creator-text">{{ creatorName }}</div>
+              </div>
+              <div class="createDate">
+                  <div class="createOn-icon"></div>
+                  <div class="createOn-text">Créé le {{formatDate(event.createdOn)}}<!--Mercredi 17 juin 2024--></div>
+              </div>
+          </div>
+      </div>
+
+      <div class="buttons">
+          <div class="button1" *ngIf="creator===false">
+              <div class="reserve" *ngIf="registered===false" (click)="registration()" >Réserver</div>
+              <div class="cancel" *ngIf="registered===true" (click)="unregistration()">Désinscrire</div>
+          </div>
+          <div *ngIf="creator===true">
+              <div class="edit">Modifier</div>
+              <div class="delete" (click)="deleteEvent()">Supprimer</div>
+          </div>
+      </div>
+
+  </div>
+</div>
+

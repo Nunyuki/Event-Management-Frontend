@@ -18,4 +18,8 @@ export class UserService {
     login(pseudo: string, password: string): Observable<any> {
         return this.http.post<any>(`${this.usersUrl}/login`, { pseudo, password });
     }
+
+    getUser(id: string): Observable<User> {
+      return this.http.get<User>(`${this.usersUrl}/${id}`);
+  }
 }

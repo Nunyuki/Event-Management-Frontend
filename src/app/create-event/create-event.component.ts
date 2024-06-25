@@ -5,6 +5,8 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { EventService } from '../services/event.service';
 import { CategoryService } from '../services/category.service';
 import { Category } from '../data/category';
+import { environment } from '../environments/environment';
+import { th } from 'date-fns/locale';
 
 @Component({
   selector: 'app-create-event',
@@ -16,11 +18,17 @@ export class CreateEventComponent {
   selectedImageBytes: Uint8Array | null = null;
   selectedImageBase64: string | null = null;
 
-  categories: Category[] = [];
+  showCreateCategoryForm: boolean = false;
   showCategoryMenu: boolean = false;
+  showCategoryImageSelector: boolean = false;
+
+  categories: Category[] = [];
   selectedCategory: string | null = null;
+  categoryImages: string[] = [];
+  selectedCategoryImage: string | null = null;
 
   errorMessage: string | null = null;
+  categoryErrorMessage: string | null = null;
 
   form: FormGroup = this.fb.group({
     eventName: ['', Validators.required],
@@ -36,9 +44,19 @@ export class CreateEventComponent {
     heure: ['', Validators.required],
   });
 
+  formCategory: FormGroup = this.fb.group({
+    categoryName: [''],
+    imagePath: ['', Validators.required],
+  });
+
   constructor(private router: Router, private fb: FormBuilder, private http: HttpClient, private eventService: EventService, private categoryService: CategoryService) {}
 
   ngOnInit(): void {
+    const nbCategoryImages = environment.nbCategoryImages;
+    for (let i = 1; i <= nbCategoryImages; i++) {
+      this.categoryImages.push(`../../assets/categories/template${i}.png`);
+    }
+
     this.categoryService.getCategories().subscribe({
       next: (data: Category[]) => {
         console.log('Catégories récupérées', data)
@@ -48,34 +66,6 @@ export class CreateEventComponent {
         console.error('Erreur dans la récupération des catégories', error);
       }
     });
-  }
-
-  get eventName() {
-    return this.form.controls['eventName'];
-  }
-
-  get description() {
-    return this.form.controls['description'];
-  }
-
-  get date() {
-    return this.form.controls['date'];
-  }
-
-  get heure() {
-    return this.form.controls['heure'];
-  }
-
-  get placeDisponible() {
-    return this.form.controls['placeDisponible'];
-  }
-
-  get category() {
-    return this.form.controls['category'];
-  }
-
-  get eventLocation() {
-    return this.form.controls['eventLocation'];
   }
 
   onFileSelected(event: any) {
@@ -106,14 +96,42 @@ export class CreateEventComponent {
   }
 
   toggleCategoryMenu() {
+    if (this.showCreateCategoryForm) {
+      this.toggleCreateCategoryForm();
+    }
     this.showCategoryMenu = !this.showCategoryMenu;
+  }
+
+  toggleCreateCategoryForm() {
+    if (this.showCategoryMenu) {
+      this.toggleCategoryMenu();
+    }
+    this.showCreateCategoryForm = !this.showCreateCategoryForm;
+  }
+
+  toggleCategoryImageSelector() {
+    this.showCategoryImageSelector = !this.showCategoryImageSelector;
+  }
+
+  selectCategoryImage(image: string): void {
+    this.toggleCategoryImageSelector();
+    this.selectedCategoryImage = image;
+    this.formCategory.controls['imagePath'].setValue(image.split('/')[4].split('.')[0]);
+  }
+
+  formatDate(dateString: string): string {
+    const date = new Date(dateString);
+    const year = date.getFullYear();
+    const month = ('0' + (date.getMonth() + 1)).slice(-2);
+    const day = ('0' + date.getDate()).slice(-2);
+    return `${year}-${month}-${day}`;
   }
 
   createEvent() {
     if (this.form.valid) {
       const formValue = this.form.value;
 
-      const eventDate = `${formValue.date}T${formValue.heure}`;
+      const eventDate = `${this.formatDate(formValue.date)}T${formValue.heure}`;
       this.form.controls['eventDate'].setValue(eventDate);
 
       const created_by = JSON.parse(localStorage.getItem('currentUser') as string).id;
@@ -139,6 +157,40 @@ export class CreateEventComponent {
     } else {
       console.log('Formulaire invalide', this.form.value);
       this.errorMessage = 'Veuillez remplir tous les champs';
+    }
+  }
+
+  createCategory() {
+    if (this.formCategory.valid) {
+      const formValue = this.formCategory.value;
+      console.log('Formulaire de création de catégorie valide', formValue);
+
+      this.categoryService.createCategory(formValue).subscribe({
+        next: (response) => {
+          console.log('Catégorie créée avec succès', response);
+          this.categoryService.getCategories().subscribe({
+            next: (data: Category[]) => {
+              console.log('Catégories misent à jour', data)
+              this.categories = data;
+            },
+            error: (error) => {
+              console.error('Erreur dans la récupération des catégories', error);
+            }
+          });
+          this.formCategory.reset();
+          this.selectedCategoryImage = null;
+          this.toggleCreateCategoryForm();
+          this.toggleCategoryMenu();
+          this.selectedCategory = formValue.categoryName;
+          this.form.controls['categoryName'].setValue(formValue.categoryName);
+        },
+        error: (error) => {
+          this.categoryErrorMessage = 'La catégorie existe déjà';
+        }
+      });
+    } else {
+      console.log('Formulaire de création de catégorie invalide', this.formCategory.value);
+      this.categoryErrorMessage = 'Veuillez remplir tous les champs';
     }
   }
 

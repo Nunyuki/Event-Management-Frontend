@@ -22,4 +22,16 @@ export class EventService {
         
         return this.http.post(this.eventsUrl, formData, { headers });
     }
+    
+    deleteEvent(id: string): Observable<any> {
+        return this.http.delete(`${this.eventsUrl}/${id}`);
+    }
+
+    updateEvent(id :string, event: Event): Observable<any> {
+        return this.http.put(`${this.eventsUrl}/${id}`, event);
+    }
+
+    getEvent(id: string): Observable<Event> {
+        return this.http.get<Event>(`${this.eventsUrl}/${id}`);
+    }
 }

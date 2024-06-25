@@ -30,7 +30,7 @@
 
   <div class="display-category" *ngIf="displayMode === 'categories'">
     <div class="row" *ngFor="let row of categoryRows">
-      <div class="col" *ngFor="let category of row">
+      <div class="col-4" *ngFor="let category of row">
         <div class="image" [ngStyle]="{'background-image': 'url(../assets/categories/' + category.imagePath + '.png)'}">
           <div class="category-label">{{ category.categoryName }}</div>
         </div>
@@ -39,7 +39,7 @@
   </div>
 
   <div class="display-event" *ngIf="displayMode === 'events'">
-    <div class="event-details" *ngFor="let event of events">
+    <div class="event-details" *ngFor="let event of events" (click)="redirectToEventPage(event)">
       <img class="event-image" *ngIf="event.image" [src]="'data:image/jpeg;base64,' + event.image" alt="Event Image">
       <div class="event-data">
         <div class="event-name">{{ event.eventName }}</div>

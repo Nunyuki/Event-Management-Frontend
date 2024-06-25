@@ -22,6 +22,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
+import { EventPageComponent } from './event-page/event-page.component';
+import { RegistrationService } from './services/registration.service';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,7 @@ import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
     AllCategoryEventComponent,
     MainPageComponent,
     CreateEventComponent,
+    EventPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,6 +51,7 @@ import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
     UserService,
     CategoryService,
     EventService,
+    RegistrationService,
     { provide: MAT_DATE_LOCALE, useValue: 'fr-FR' } 
   ],
   bootstrap: [AppComponent]

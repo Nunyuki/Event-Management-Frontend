@@ -1,0 +1,86 @@
+@use "@angular/material" as mat;
+
+body,
+html {
+  font-family: 'KoPub Batang', serif;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url(./assets/design/background.png) no-repeat center center fixed;
+  background-size: cover;
+  background-color: #000;
+}
+
+$custom-primary-palette: (
+  50: white,
+  100: white,
+  200: white,
+  300: white,
+  400: white,
+  500: white,
+  600: white,
+  700: white,
+  800: white,
+  900: white,
+  contrast: (
+    50: white,
+    100: white,
+    200: white,
+    300: white,
+    400: white,
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+  ),
+);
+
+$custom-warn-palette: (
+  50: transparent,
+  100: transparent,
+  200: transparent,
+  300: transparent,
+  400: transparent,
+  500: transparent,
+  600: transparent,
+  700: transparent,
+  800: transparent,
+  900: transparent,
+  contrast: (
+    50: transparent,
+    100: transparent,
+    200: transparent,
+    300: transparent,
+    400: transparent,
+    500: transparent,
+    600: transparent,
+    700: transparent,
+    800: transparent,
+    900: transparent,
+  ),
+);
+
+$custom-typography: mat.define-typography-config(
+  $font-family: 'KoPub Batang',
+);
+$custom-primary: mat.define-palette($custom-primary-palette);
+$custom-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$custom-warn: mat.define-palette($custom-warn-palette);
+
+$custom-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $custom-primary,
+      accent: $custom-accent,
+      warn: $custom-warn,
+    ),
+    typography: $custom-typography,
+  )
+);
+
+@include mat.all-component-themes($custom-theme);
