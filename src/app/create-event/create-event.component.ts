@@ -14,6 +14,9 @@ import { th } from 'date-fns/locale';
   styleUrls: ['./create-event.component.css']
 })
 export class CreateEventComponent {
+
+  minDate = new Date();
+
   selectedImage: File | null = null;
   selectedImageBytes: Uint8Array | null = null;
   selectedImageBase64: string | null = null;
@@ -49,7 +52,7 @@ export class CreateEventComponent {
     imagePath: ['', Validators.required],
   });
 
-  constructor(private router: Router, private fb: FormBuilder, private http: HttpClient, private eventService: EventService, private categoryService: CategoryService) {}
+  constructor(private router: Router, private fb: FormBuilder, private http: HttpClient, private eventService: EventService, private categoryService: CategoryService) { }
 
   ngOnInit(): void {
     const nbCategoryImages = environment.nbCategoryImages;
@@ -192,10 +195,5 @@ export class CreateEventComponent {
       console.log('Formulaire de création de catégorie invalide', this.formCategory.value);
       this.categoryErrorMessage = 'Veuillez remplir tous les champs';
     }
-  }
-
-  logout() {
-    localStorage.removeItem('currentUser');
-    this.router.navigate(['/home']);
   }
 }

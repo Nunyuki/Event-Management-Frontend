@@ -8,15 +8,17 @@ import { MainPageComponent } from './main-page/main-page.component';
 import { AllCategoryEventComponent } from './all-category-event/all-category-event.component';
 import { CreateEventComponent } from './create-event/create-event.component';
 import { EventPageComponent } from './event-page/event-page.component';
+import { ManagePageComponent } from './manage-page/manage-page.component';
 
 const routes: Routes = [
-  { path:'home', component: HomeComponent },
-  { path:'login', component: LoginComponent },
-  { path:'signup', component: SignupComponent },
-  { path:'mainPage', component: MainPageComponent},
-  { path:'allCategoryEvent', component: AllCategoryEventComponent },
-  { path:'createEvent', component: CreateEventComponent },
-  { path:'eventPage', component: EventPageComponent },
+  { path: 'home', component: HomeComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'signup', component: SignupComponent },
+  { path: 'mainPage', component: MainPageComponent },
+  { path: 'allCategoryEvent', component: AllCategoryEventComponent },
+  { path: 'createEvent', component: CreateEventComponent },
+  { path: 'eventPage', component: EventPageComponent },
+  { path: 'managePage', component: ManagePageComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
 ];
 

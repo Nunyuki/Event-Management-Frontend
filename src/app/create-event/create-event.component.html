@@ -3,7 +3,7 @@
   <div class="wakuwaku-2">WakuWaku Teikoku</div>
 </div>
 
-<div class="profil" (click)="logout()"></div>
+<div class="profil" routerLink="/managePage"></div>
 
 <div class="create-event">
   <form [formGroup]="form" (ngSubmit)="createEvent()">
@@ -36,16 +36,16 @@
         <label for="date">Date & Heure</label>
 
         <mat-form-field>
-          <input matInput [matDatepicker]="picker" formControlName="date" placeholder="dd/MM/yyyy">
+          <input matInput [min]="minDate" [matDatepicker]="picker" formControlName="date" placeholder="dd/MM/yyyy">
           <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
-        
+
         <div class="rectangle-3">
           <input id="heure" class="heure" type="text" formControlName="heure" placeholder="hh:mm">
         </div>
-      </div>      
-      
+      </div>
+
       <div class="place">
         <label for="place-disponible">Place disponible</label>
         <div class="rectangle-2">
@@ -68,9 +68,10 @@
     <form [formGroup]="formCategory" (ngSubmit)="createCategory()">
       <div *ngIf="showCreateCategoryForm" class="creating-category">
         <label for="creating-category-name">Nom de la catégorie</label>
-          <div class="creating-category-rectangle">
-            <input id="creating-category-name" class="creating-category-name" type="text" formControlName="categoryName" />
-          </div>
+        <div class="creating-category-rectangle">
+          <input id="creating-category-name" class="creating-category-name" type="text"
+            formControlName="categoryName" />
+        </div>
         <div class="creating-category-add-photo" (click)="toggleCategoryImageSelector()">
           <div class="creating-category-photo-icon"></div>
           <img *ngIf="selectedCategoryImage" [src]="selectedCategoryImage" alt="Selected Category Image">

@@ -10,8 +10,9 @@ export class MainPageComponent {
 
   isFilterBoxVisible: boolean = false;
   selectedFilter: string | null = null;
+  searchInput: string = '';
 
-  constructor(private router: Router) { }
+  constructor(private router: Router,) { }
 
   toggleFilterBox() {
     this.isFilterBoxVisible = !this.isFilterBoxVisible;
@@ -36,8 +37,13 @@ export class MainPageComponent {
     }
   }
 
-  logout() {
-    localStorage.removeItem('currentUser');
-    this.router.navigate(['/home']);
+  search() {
+    const trimmedSearchInput = this.searchInput.trim();
+    const queryParams: any = { query: trimmedSearchInput };
+    if (this.selectedFilter) {
+      queryParams.filter = this.selectedFilter;
+    }
+    queryParams.displayMode = 'events';
+    this.router.navigate(['/allCategoryEvent'], { queryParams });
   }
 }

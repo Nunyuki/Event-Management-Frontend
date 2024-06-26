@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
@@ -25,6 +26,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { ManagePageComponent } from './manage-page/manage-page.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,8 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
     AllCategoryEventComponent,
     MainPageComponent,
     CreateEventComponent,
-    EventPageComponent
+    EventPageComponent,
+    ManagePageComponent
   ],
   imports: [
     BrowserModule,
@@ -47,6 +50,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
     MatNativeDateModule,
     MatSelectModule,
     BrowserAnimationsModule,
+    FormsModule
   ],
   providers: [
     UserService,

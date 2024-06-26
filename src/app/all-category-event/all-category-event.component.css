@@ -48,9 +48,9 @@
 .search {
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  padding: 5px 5px;
+  justify-content: flex-end;
+  align-items: right;
+  padding: 5px 20px;
   gap: 10px;
   position: absolute;
   width: 400px;
@@ -61,19 +61,7 @@
   opacity: 0.7;
   border-radius: 50px;
   z-index: 1;
-}
-
-.search-input {
-  width: 77%;
-  height: 90%;
-  background: none;
-  border: none;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 15px;
-  line-height: 20px;
-  color: #000000;
-  outline: none;
+  cursor: pointer;
 }
 
 .search-icon {
@@ -81,7 +69,6 @@
   height: 27px;
   background: url('../../assets/icons/search-icon.png');
   background-size: cover;
-  cursor: pointer;
 }
 
 .filter-icon {
@@ -89,7 +76,6 @@
   height: 25px;
   background: url('../../assets/icons/filter-icon.png');
   background-size: cover;
-  cursor: pointer;
 }
 
 .create-event {
@@ -211,7 +197,6 @@
 
 .row {
   display: flex;
-  justify-content: space-between;
   width: 100%;
 }
 

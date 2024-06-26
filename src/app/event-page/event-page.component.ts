@@ -55,7 +55,7 @@ export class EventPageComponent {
     }
 
     getEvent() {
-        this.EventService.getEvent(this.eventid).subscribe({
+        this.EventService.getEventById(this.eventid).subscribe({
             next: (data: any) => {
                 console.log('Evénement récupéré', data);
                 this.event = data;

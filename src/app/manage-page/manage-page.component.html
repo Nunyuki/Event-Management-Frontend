@@ -1,0 +1,65 @@
+<div class="web-name" routerLink="/mainPage">
+  <div class="wakuwaku">わくわくていこく</div>
+  <div class="wakuwaku-2">WakuWaku Teikoku</div>
+</div>
+
+<div class="profil"></div>
+
+<div class="create-event" routerLink="/createEvent">
+  <div class="create-text">Créer</div>
+  <div class="create-button"></div>
+</div>
+
+<div class="search" routerLink="/mainPage">
+  <div class="search-icon"></div>
+  <div class="filter-icon"></div>
+</div>
+
+<div class="page">
+  <div class="switch">
+    <div class="profil-rect" (click)="toggleDisplay('profil')"
+      [ngClass]="{ 'active': displayMode === 'profil', 'inactive': displayMode !== 'profil' }">
+      <div class="name-rect">Profil</div>
+    </div>
+    <div class="inscription-rect" (click)="toggleDisplay('inscriptions')"
+      [ngClass]="{ 'active': displayMode === 'inscriptions', 'inactive': displayMode !== 'inscriptions' }">
+      <div class="name-rect">Mes Inscriptions</div>
+    </div>
+    <div class="event-rect" (click)="toggleDisplay('events')"
+      [ngClass]="{ 'active': displayMode === 'events', 'inactive': displayMode !== 'events' }">
+      <div class="name-rect">Mes Evènements</div>
+    </div>
+    <div class="logout-rect" (click)="logout()">
+      <div class="name-rect">Déconnexion</div>
+    </div>
+  </div>
+
+  <div class="display-profile" *ngIf="displayMode === 'profil'">
+    <div class = "show"></div>
+    <div class="inscription-box">
+      <div class="rectangle"></div>
+      <div class="inscription-element">
+
+        <div class="profil-icon"></div>
+        <div class="intro-text">Petit rappel pour toi</div>
+  
+        <div class="profil-info">Tout le monde te connaît sous le nom </div>
+        <div class="profil-info-2">{{user?.pseudo}}</div>
+
+        <div class="profil-info">Mais en réalité tu t'appelles</div>
+        <div class="profil-info-2">{{user?.username}}</div>
+
+        <div class="profil-info">Et si on veut te contacter c'est ici</div>
+        <div class="profil-info-2">{{user?.email}}</div>
+
+        <div class="profil-info">C'est compris ?</div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="display-event" *ngIf="displayMode === 'events'">
+
+</div>

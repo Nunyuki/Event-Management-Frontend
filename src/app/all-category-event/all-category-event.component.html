@@ -3,16 +3,14 @@
   <div class="wakuwaku-2">WakuWaku Teikoku</div>
 </div>
 
-<div class="profil" (click)="logout()"></div>
+<div class="profil" routerLink="/managePage"></div>
 
 <div class="create-event" routerLink="/createEvent">
   <div class="create-text">Créer</div>
   <div class="create-button"></div>
 </div>
 
-<div class="search">
-  <label for="search-input" class="visually-hidden">Recherche</label>
-  <input type="text" class="search-input">
+<div class="search" routerLink="/mainPage">
   <div class="search-icon"></div>
   <div class="filter-icon"></div>
 </div>
@@ -31,7 +29,8 @@
   <div class="display-category" *ngIf="displayMode === 'categories'">
     <div class="row" *ngFor="let row of categoryRows">
       <div class="col-4" *ngFor="let category of row">
-        <div class="image" [ngStyle]="{'background-image': 'url(../assets/categories/' + category.imagePath + '.png)'}">
+        <div class="image" [ngStyle]="{'background-image': 'url(../assets/categories/' + category.imagePath + '.png)'}"
+          (click)="searchByCategory(category.categoryName)">
           <div class="category-label">{{ category.categoryName }}</div>
         </div>
       </div>
@@ -46,7 +45,7 @@
         <div class="category-line">
           <div class="category-name">{{ event.categoryName }}</div>
         </div>
-        
+
         <div class="event-info">
           <div class="adress">
             <div class="adress-icon"></div>

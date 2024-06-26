@@ -21,12 +21,21 @@ export class AllCategoryEventComponent {
 
   events: any[] = [];
 
-  constructor(private router: Router, private activatedRoute: ActivatedRoute, private route: ActivatedRoute, private categoryService: CategoryService, private eventService: EventService) {}
+  query: string | null = null;
+  filter: string | null = null;
+
+  constructor(private router: Router, private activatedRoute: ActivatedRoute, private route: ActivatedRoute, private categoryService: CategoryService, private eventService: EventService) { }
 
   ngOnInit(): void {
     this.activatedRoute.queryParams.subscribe(params => {
       if (params['displayMode']) {
         this.displayMode = params['displayMode'];
+      }
+      if (params['query']) {
+        this.query = params['query'];
+      }
+      if (params['filter']) {
+        this.filter = params['filter'];
       }
       this.loadData();
     });
@@ -45,15 +54,31 @@ export class AllCategoryEventComponent {
         }
       });
     } else {
-      this.eventService.getEvents().subscribe({
-        next: (data: any) => {
-          console.log('Evénements récupérés', data);
-          this.events = data;
-        },
-        error: (error) => {
-          console.error('Erreur dans la récupération des événements', error);
-        }
-      });
+
+      const query = this.query ?? '';
+      const filter = this.filter ?? 'default';
+
+      if (query) {
+        this.eventService.searchEvents(query, filter).subscribe({
+          next: (data: any) => {
+            console.log('Evénements récupérés', data);
+            this.events = data;
+          },
+          error: (error) => {
+            console.error('Erreur dans la récupération des événements', error);
+          }
+        });
+      } else {
+        this.eventService.getEvents().subscribe({
+          next: (data: any) => {
+            console.log('Evénements récupérés', data);
+            this.events = data;
+          },
+          error: (error) => {
+            console.error('Erreur dans la récupération des événements', error);
+          }
+        });
+      }
     }
   }
 
@@ -100,9 +125,17 @@ export class AllCategoryEventComponent {
     this.router.navigate(['/eventPage'], { queryParams: { eventId: event.id } });
   }
 
-  logout() {
-    localStorage.removeItem('currentUser');
-    this.router.navigate(['/home']);
+  searchByCategory(category: string): void {
+    this.eventService.searchEvents(category ?? '', 'category').subscribe({
+      next: (data: any) => {
+        console.log('Evénements récupérés', data);
+        this.events = data;
+        this.displayMode = 'events'
+      },
+      error: (error) => {
+        console.error('Erreur dans la récupération des événements', error);
+      }
+    });
   }
 
 }

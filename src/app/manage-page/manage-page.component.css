@@ -1,0 +1,282 @@
+.web-name {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 1%;
+  top: 3%;
+  padding: 0 6px;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.wakuwaku {
+  width: 360px;
+  height: 55px;
+  font-weight: 400;
+  font-size: 50px;
+  line-height: 55px;
+  color: #FFFFFF;
+  opacity: 0.7;
+  font-weight: lighter;
+}
+
+.wakuwaku-2 {
+  width: 235px;
+  height: 27px;
+  font-weight: 400;
+  font-size: 25px;
+  line-height: 27px;
+  color: #FFFFFF;
+  opacity: 0.7;
+  font-weight: lighter;
+}
+
+.profil {
+  top: 20px;
+  position: absolute;
+  width: 45px;
+  height: 45px;
+  right: 30px;
+  opacity: 0.7;
+  background: url(../../assets/icons/login-icon.png);
+  background-size: cover;
+  cursor: pointer;
+}
+
+.search {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: right;
+  padding: 5px 20px;
+  gap: 10px;
+  position: absolute;
+  width: 400px;
+  height: 35px;
+  right: 105px;
+  top: 27px;
+  background: #D9D9D9;
+  opacity: 0.7;
+  border-radius: 50px;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.search-icon {
+  width: 27px;
+  height: 27px;
+  background: url('../../assets/icons/search-icon.png');
+  background-size: cover;
+}
+
+.filter-icon {
+  width: 25px;
+  height: 25px;
+  background: url('../../assets/icons/filter-icon.png');
+  background-size: cover;
+}
+
+.create-event {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 7px 20px;
+  gap: 15px;
+  position: absolute;
+  width: 150px;
+  height: 35px;
+  right: 525px;
+  top: 27px;
+  background: rgba(6, 68, 112, 0.7);
+  border-radius: 20px;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.create-text {
+  width: 65px;
+  height: 26px;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 26px;
+  text-align: center;
+  color: #FFFFFF;
+}
+
+.create-button {
+  width: 25px;
+  height: 25px;
+  background: url(../../assets/icons/create-icon.png);
+  background-size: cover;
+}
+
+.page {
+  position: absolute;
+  width: 1280px;
+  height: 700px;
+  left: 50px;
+  top: 0px;
+}
+
+.switch {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 30px;
+  isolation: isolate;
+  position: absolute;
+  width: 1200px;
+  height: 40px;
+  left: 0px;
+  top: 168px;
+}
+
+.profil-rect,
+.inscription-rect,
+.event-rect,
+.logout-rect {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 230px;
+  height: 40px;
+  opacity: 0.7;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.active {
+  background: #BA63AA;
+}
+
+.inactive {
+  background: rgba(162, 187, 204, 0.7);
+}
+
+.logout-rect {
+  background: rgba(6, 68, 112, 0.7);
+}
+
+.profil-account,
+.inscriptions,
+.evenements,
+.logout {
+  position: relative;
+  color: #FFFFFF;
+  width: 230px;
+  height: 25px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 25px;
+  line-height: 27px;
+  cursor: pointer;
+  top: 6px;
+}
+
+.name-rect {
+  color: #FFFFFF;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 27px;
+  cursor: pointer;
+}
+
+
+.inscription-box {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  position: absolute;
+  left: 45%;
+  right: 45%;
+  top: 35%;
+  height: 500px;
+  width: 1000px;
+}
+
+.rectangle {
+  position: absolute;
+  width: 350px;
+  height: 450px;
+  left: 24px;
+  opacity: 0.25;
+  border: 5px solid #FFFFFF;
+  border-radius: 70px;
+}
+
+.inscription-element {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 400px;
+  height: 465px;
+  top:-10px;
+  gap: 35px;
+}
+
+.profil-icon {
+  width: 45px;
+  height: 45px;
+  left: 135px;
+  opacity: 0.7;
+  background: url(../../assets/icons/login-icon.png);
+  background-size: cover;
+}
+
+.inscription {
+  position: relative;
+  width: 1100px;
+  height: 750px;
+  z-index: 0;
+}
+
+.profil-info {
+  width: 335px;
+  height: 20px;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 20px;
+  text-align: center;
+  color: #FFFFFF;
+  opacity: 0.7;;
+  margin-bottom: -30px;;
+}
+
+.profil-info-2 {
+  width: 335px;
+  height: 20px;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 20px;
+  text-align: center;
+  color: #FFFFFF;
+}
+
+.intro-text {
+  width: 335px;
+  height: 20px;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 25px;
+  text-align: center;
+  color: #FFFFFF;
+}
+
+.show {
+  height: 400px;
+  width: 400px;
+  background: url(../../assets/design/my_profil.png);
+  background-size: cover;
+  position: absolute; 
+  bottom: -100px; 
+  left: 200px; 
+}
