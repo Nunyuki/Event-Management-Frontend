@@ -15,6 +15,7 @@ import { Event } from '../data/event';
 export class AllCategoryEventComponent {
 
   displayMode: string = 'categories';
+  showFilterBox: boolean = false;
 
   categories: Category[] = [];
   categoryRows: any[][] = [];
@@ -119,6 +120,46 @@ export class AllCategoryEventComponent {
         }
       });
     }
+  }
+
+  toggleFilterBox(): void {
+    this.showFilterBox = !this.showFilterBox;
+  }
+
+  sortEvents(criteria: string): void {
+    if (this.displayMode === 'categories') {
+      this.eventService.getEvents().subscribe({
+        next: (data: any) => {
+          console.log('Evénements récupérés', data)
+          this.events = data;
+          this.displayMode = 'events';
+          this.sortEvents(criteria);
+        },
+        error: (error) => {
+          console.error('Erreur dans la récupération des événements', error);
+        }
+      });
+    } else {
+      switch (criteria) {
+        case 'name-asc':
+          this.events.sort((a, b) => a.eventName.localeCompare(b.eventName));
+          break;
+        case 'name-desc':
+          this.events.sort((a, b) => b.eventName.localeCompare(a.eventName));
+          break;
+        case 'date-asc':
+          this.events.sort((a, b) => this.arrayToDate(a.eventDate).getTime() - this.arrayToDate(b.eventDate).getTime());
+          break;
+        case 'date-desc':
+          this.events.sort((a, b) => this.arrayToDate(b.eventDate).getTime() - this.arrayToDate(a.eventDate).getTime());
+          break;
+      }
+      this.showFilterBox = false;
+    }
+  }
+
+  arrayToDate(dateArray: number[]): Date {
+    return new Date(dateArray[0], dateArray[1] - 1, dateArray[2], dateArray[3], dateArray[4]);
   }
 
   redirectToEventPage(event: Event): void {

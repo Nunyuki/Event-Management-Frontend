@@ -36,7 +36,7 @@
         <label for="date">Date & Heure</label>
 
         <mat-form-field>
-          <input matInput [min]="minDate" [matDatepicker]="picker" formControlName="date" placeholder="dd/MM/yyyy">
+          <input matInput [min]="minDate" [matDatepicker]="picker" formControlName="date" placeholder="dd/MM/yyyy" [value]="eventId ? startDate : null">
           <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
@@ -92,7 +92,8 @@
     <div *ngIf="errorMessage" class="errors-message">{{ errorMessage }}</div>
 
     <div class="create-event-btn">
-      <button class="share-event" type="submit">Partager mon événement</button>
+      <button *ngIf="!eventId" class="share-event" type="submit">Partager mon événement</button>
+      <button *ngIf="eventId" class="share-event" (click)="buttonUpdateEvent()">Mise à jour de l'événement</button>
     </div>
   </form>
 </div>

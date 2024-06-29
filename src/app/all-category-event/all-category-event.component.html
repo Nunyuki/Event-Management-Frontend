@@ -23,7 +23,14 @@
     </div>
     <div class="categories" (click)="toggleDisplay('categories')">Categories</div>
     <div class="evenements" (click)="toggleDisplay('events')">Evènements</div>
-    <div class="filter-icon2"></div>
+    <div class="filter-icon2" (click)="toggleFilterBox()"></div>
+  </div>
+
+  <div class="filter-box" *ngIf="showFilterBox">
+    <div class="filter-option" (click)="sortEvents('name-asc')">Nom (A-Z)</div>
+    <div class="filter-option" (click)="sortEvents('name-desc')">Nom (Z-A)</div>
+    <div class="filter-option" (click)="sortEvents('date-asc')">Date (Croissant)</div>
+    <div class="filter-option" (click)="sortEvents('date-desc')">Date (Décroissant)</div>
   </div>
 
   <div class="display-category" *ngIf="displayMode === 'categories'">

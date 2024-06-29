@@ -179,6 +179,7 @@
   height: 40px;
   background: url('../../assets/icons/filter-icon2.png');
   background-size: cover;
+  cursor: pointer;
 }
 
 .display-category, .display-event{
@@ -372,4 +373,27 @@
   flex: none;
   order: 0;
   flex-grow: 0;
+}
+
+.filter-box {
+  position: absolute;
+  top: 180px;
+  left: 450px;
+  width: 200px;
+  background-color: rgba(6, 68, 112, 0.7);
+  border-radius: 5px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+}
+
+.filter-option {
+  padding: 10px;
+  cursor: pointer;
+  color: #FFFFFF;
+}
+
+.filter-option:hover {
+  background-color: rgba(186, 99, 170, 0.7);
 }

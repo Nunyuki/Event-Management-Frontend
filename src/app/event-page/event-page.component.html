@@ -50,12 +50,23 @@
     </div>
   </div>
 
-  <div class="button" *ngIf="creator===false">
+  <div>
+    <div *ngIf="full===true" class="button-full"> COMPLET </div>
+  </div>
+
+  <div class="button" *ngIf="creator===false && full===false || registered===true">
     <div class="register-user" *ngIf="registered===false" (click)="registration()">Réserver</div>
     <div class="register-user" *ngIf="registered===true" (click)="unregistration()">Désinscrire</div>
   </div>
   <div *ngIf="creator===true">
-    <div class="edit">Modifier</div>
-    <div class="delete" (click)="deleteEvent()">Supprimer</div>
+    <div class="edit" (click)="redirectToCreatePage()">Modifier</div>
+    <div class="delete" (click)="confirmDelete()">Supprimer</div>
   </div>
+
+  <div class="confirmDelete" *ngIf="deleteConfirmation===true">
+    <div class="confirmDelete-text">Voulez-vous vraiment supprimer cet événement ?</div>
+    <div class="confirmDelete-button-oui" (click)="deleteEvent()">Oui</div>
+    <div class="confirmDelete-button-non" (click)="cancelDelete()">Non</div>
+  </div>
+
 </div>

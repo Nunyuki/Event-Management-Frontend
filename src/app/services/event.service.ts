@@ -39,4 +39,8 @@ export class EventService {
     const url = `${this.eventsUrl}/filter/${search}/${filter}`;
     return this.http.get<Event[]>(url);
   }
+
+  getEventsByRegistration(userId: string): Observable<Event[]> {
+    return this.http.get<Event[]>(`${this.eventsUrl}/user/${userId}`);
+  }
 }

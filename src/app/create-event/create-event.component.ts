@@ -7,6 +7,7 @@ import { CategoryService } from '../services/category.service';
 import { Category } from '../data/category';
 import { environment } from '../environments/environment';
 import { th } from 'date-fns/locale';
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: 'app-create-event',
@@ -16,6 +17,7 @@ import { th } from 'date-fns/locale';
 export class CreateEventComponent {
 
   minDate = new Date();
+  startDate: Date | null = null;
 
   selectedImage: File | null = null;
   selectedImageBytes: Uint8Array | null = null;
@@ -52,9 +54,17 @@ export class CreateEventComponent {
     imagePath: ['', Validators.required],
   });
 
-  constructor(private router: Router, private fb: FormBuilder, private http: HttpClient, private eventService: EventService, private categoryService: CategoryService) { }
+  eventId: string = '';
+  constructor(private route: ActivatedRoute, private router: Router, private fb: FormBuilder, private http: HttpClient, private eventService: EventService, private categoryService: CategoryService) { }
 
   ngOnInit(): void {
+    this.route.queryParams.subscribe(params => {
+      this.eventId = params['eventId'];
+      if (this.eventId) {
+        this.getEvent();
+      }
+    });
+    
     const nbCategoryImages = environment.nbCategoryImages;
     for (let i = 1; i <= nbCategoryImages; i++) {
       this.categoryImages.push(`../../assets/categories/template${i}.png`);
@@ -69,6 +79,7 @@ export class CreateEventComponent {
         console.error('Erreur dans la récupération des catégories', error);
       }
     });
+    console.log('eventId', this.eventId);
   }
 
   onFileSelected(event: any) {
@@ -196,4 +207,68 @@ export class CreateEventComponent {
       this.categoryErrorMessage = 'Veuillez remplir tous les champs';
     }
   }
+
+  getEvent() {
+    this.eventService.getEventById(this.eventId).subscribe({
+      next: (data: any) => {
+        console.log('Evénement récupéré', data);
+        this.form.controls['eventName'].setValue(data.eventName);
+        this.form.controls['eventDescription'].setValue(data.eventDescription);
+        this.form.controls['eventLocation'].setValue(data.eventLocation);
+        this.form.controls['maxCapacity'].setValue(data.maxCapacity);
+        this.form.controls['categoryName'].setValue(data.categoryName);
+
+        const year = data.eventDate[0];
+        const month = data.eventDate[1] - 1;
+        const day = data.eventDate[2];
+        const hours = data.eventDate[3];
+        const minutes = data.eventDate[4];
+        this.startDate = new Date(year, month, day, hours, minutes);
+        this.form.controls['date'].setValue(this.startDate);
+
+        const heure : string = data.eventDate[3]+":"+data.eventDate[4];
+        this.form.controls['heure'].setValue(heure);
+        this.form.controls['createdBy'].setValue(data.createdBy);
+        this.selectedImageBase64 = data.image ? `data:image/png;base64,${data.image}` : null;
+        this.form.controls['image'].setValue(data.image);
+      },
+      error: (error) => {
+        console.error('Erreur dans la récupération de l\'événement', error);
+      }
+    });
+  }
+
+  buttonUpdateEvent() {
+    if(this.form.valid){
+      const formValue = this.form.value;
+      const eventDate = `${this.formatDate(formValue.date)}T${formValue.heure}`;
+      this.form.controls['eventDate'].setValue(eventDate);
+
+      const created_by = JSON.parse(localStorage.getItem('currentUser') as string).id;
+      this.form.controls['createdBy'].setValue(created_by);
+
+      if (this.selectedImage && this.selectedImageBytes) {
+        this.form.controls['image'].setValue(Array.from(this.selectedImageBytes));
+      }
+      const updatedFormValue = this.form.value;
+      console.log('Formulaire valide', updatedFormValue);
+
+      this.eventService.updateEvent(this.eventId, updatedFormValue).subscribe({
+        next: (response) => {
+          console.log('Evènement modifié avec succès', response);
+          this.router.navigate(['/eventPage'], { queryParams: { eventId: this.eventId } });
+        },
+        error: (error) => {
+          console.log('Erreur lors de la modification de l\'évènement', error);
+          this.errorMessage = 'Erreur lors de la modification de l\'évènement';
+        }
+      });
+    } else {
+      console.log('Formulaire invalide', this.form.value);
+      console.log('Formulaire controle',this.form.controls);
+      this.errorMessage = 'Veuillez remplir tous les champs';
+    }
+  }
+
+
 }

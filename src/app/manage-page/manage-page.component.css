@@ -114,14 +114,6 @@
   background-size: cover;
 }
 
-.page {
-  position: absolute;
-  width: 1280px;
-  height: 700px;
-  left: 50px;
-  top: 0px;
-}
-
 .switch {
   display: flex;
   flex-direction: row;
@@ -132,7 +124,7 @@
   position: absolute;
   width: 1200px;
   height: 40px;
-  left: 0px;
+  left: 50px;
   top: 168px;
 }
 
@@ -146,13 +138,12 @@
   align-items: center;
   width: 230px;
   height: 40px;
-  opacity: 0.7;
   border-radius: 20px;
   cursor: pointer;
 }
 
 .active {
-  background: #BA63AA;
+  background: rgba(186, 99, 170, 0.7);
 }
 
 .inactive {
@@ -188,15 +179,14 @@
   cursor: pointer;
 }
 
-
 .inscription-box {
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
+  align-items: center;
   position: absolute;
-  left: 45%;
-  right: 45%;
-  top: 35%;
+  top: 30%;
+  left: 50%;
+  transform: translateX(-20%);
   height: 500px;
   width: 1000px;
 }
@@ -277,6 +267,147 @@
   background: url(../../assets/design/my_profil.png);
   background-size: cover;
   position: absolute; 
-  bottom: -100px; 
-  left: 200px; 
+  left: -375px;
+  top: 80px;
+}
+
+.display-event{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  padding: 0px;
+  gap: 50px;
+  width: 1280px;
+  height: auto;
+  top: 30%;
+  left: 49%;
+  transform: translateX(-50%);
+}
+
+.event-image {
+  width: 320px;
+  height: 210px;
+  background-size: cover;
+  background-position: center;
+  filter: drop-shadow(0px 4px 10px);
+  border-radius: 48px;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.event-details {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 30px;
+  width: 1200px;
+  height: 215px;
+  border: 3px solid rgba(255, 255, 255, 0.7);
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.event-data {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  gap: 20px;
+  width: 800px;
+  height: 210px;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
+.event-name {
+  width: 800px;
+  height: 35px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 35px;
+  text-align: center;
+  color: #FFFFFF;
+  opacity: 0.7;
+}
+
+.category-line {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 2px 15px;
+  width: 600px;
+  height: 22px;
+  background: #BA63AA;
+  border-radius: 20px;
+}
+
+.category-name {
+  width: 250px;
+  height: 18px;
+  font-family: 'KoPub Batang';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 10px;
+  color: #FFFFFF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.event-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 7px;
+  margin: 0 auto;
+  width: 400px;
+  height: 100px;
+}
+
+.adress, .date{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  width: 400px;
+  height: 40px;
+}
+
+.adress-icon {
+  width: 20px;
+  height: 25px;
+  background: url('../../assets/icons/location-icon.png');
+  background-size: cover;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.event-location, .event-date{
+  width: 400px;
+  height: 20px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 20px;
+  color: #FFFFFF;
+}
+
+.date .vector {
+  width: 25px;
+  height: 25px;
+  background: url('../../assets/icons/calendar-icon.png');
+  background-size: cover;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
 }
