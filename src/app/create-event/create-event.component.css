@@ -34,7 +34,7 @@
 }
 
 .profil {
-  top: 20px;
+  top : 20px;
   position: absolute;
   width: 45px;
   height: 45px;
@@ -47,7 +47,7 @@
 
 .create-event {
   position: relative;
-  justify-content: space-around;
+  justify-content: space-around; 
   width: 1280px;
   height: 800px;
   left: -20px
@@ -57,15 +57,14 @@
   object-fit: cover;
 }
 
-.add-photo {
+.add-photo{
   padding: 100px 170px;
   border: 3px solid rgba(255, 255, 255, 0.7);
   cursor: pointer;
   z-index: 1;
 }
 
-.add-photo,
-.preview-image {
+.add-photo, .preview-image {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -94,12 +93,12 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-around;
-  gap: 20px;
-  position: relative;
+  justify-content: space-around; 
+  gap: 20px; 
+  position: relative; 
   width: 450px;
   top: 435px;
-  left: 45px;
+  left : 45px;
   padding: 20px;
   cursor: pointer;
 }
@@ -259,9 +258,7 @@
   border-radius: 20px;
 }
 
-.rectangle-2 input,
-.rectangle-3 input,
-.rectangle-4 textarea {
+.rectangle-2 input, .rectangle-3 input, .rectangle-4 textarea {
   width: 100%;
   height: 100%;
   padding: 10px 20px;
@@ -452,7 +449,7 @@
 ::ng-deep .mat-calendar-body-cell-content,
 ::ng-deep .mat-data-range-input-separator {
   color: white !important;
-  border-color: transparent !important;
+  border-color: white !important;
 }
 
 ::ng-deep .mat-calendar-body-in-preview {
@@ -475,8 +472,7 @@
   --mdc-text-button-label-text-color: white;
 }
 
-::ng-deep .mdc-text-field--no-label:not(.mdc-text-field--textarea) .mat-mdc-form-field-input-control.mdc-text-field__input,
-.mat-mdc-text-field-wrapper .mat-mdc-form-field-input-control {
+::ng-deep .mdc-text-field--no-label:not(.mdc-text-field--textarea) .mat-mdc-form-field-input-control.mdc-text-field__input, .mat-mdc-text-field-wrapper .mat-mdc-form-field-input-control {
   color: white !important;
 }
 
@@ -492,9 +488,8 @@
   align-items: center;
   padding: 12px 17px 44px;
   gap: 13px;
-  position: relative;
-  top: 435px;
-  left: -13px;
+  position: relative;   top: 435px;
+  left : -13px;
   width: 333px;
   height: 335px;
   background: rgba(186, 99, 170, 0.2);
@@ -604,7 +599,7 @@
   cursor: pointer;
 }
 
-.category-image-selector {
+.category-image-selector{
   display: flex;
   align-items: center;
   justify-content: center;
@@ -618,8 +613,7 @@
 }
 
 .category-image-selector-content {
-  background-color: rgba(6, 68, 112, 0.7);
-  ;
+  background-color: rgba(6, 68, 112, 0.7);;
   box-shadow: 0 4px 10px #FFFFFF;
   border-radius: 20px;
   margin: auto;

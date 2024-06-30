@@ -19,6 +19,7 @@ import { CategoryService } from './services/category.service';
 import { EventService } from './services/event.service';
 import { CreateEventComponent } from './create-event/create-event.component';
 import { RegistrationService } from './services/registration.service';
+import { FeedbackService } from './services/feedback.service';
 
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
@@ -57,6 +58,7 @@ import { ManagePageComponent } from './manage-page/manage-page.component';
     CategoryService,
     EventService,
     RegistrationService,
+    FeedbackService,
     { provide: MAT_DATE_LOCALE, useValue: 'fr-FR' },
     provideAnimationsAsync() 
   ],

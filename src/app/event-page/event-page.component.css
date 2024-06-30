@@ -152,7 +152,7 @@
   align-items: center;
   position: absolute;
   width: 700px;
-  height: 500px;
+  height: 400px;
   left: 550px;
   top: 180px;
   padding: 0 0 20px;
@@ -181,7 +181,6 @@
 }
 
 .event-image {
-  border : 1px solid #FFFFFF;
   position: absolute;
   width: 380px;
   height: 266px;
@@ -280,8 +279,7 @@
     border-radius: 20px;
 }
 
-.register-user,
-.edit
+.register-user
 {
     width: 99px;
     height: 26px;
@@ -291,16 +289,59 @@
     text-align: center;
     color: #FFFFFF;
     cursor : pointer;
+    left:100px;
 }
 
-.register-user{
-  left:100px;
+.button-full {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 258px;
+    height: 38px;
+    left: 770px;
+    top: 650px;
+    gap: 40px;
+    background: rgba(6, 68, 112, 0.7);
+    border-radius: 20px;
+    color: #FFFFFF;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 258px;
+    height: 38px;
+    left: 770px;
+    top: 650px;
+    gap: 40px;
+    background: rgba(6, 68, 112, 0.7);
+    border-radius: 20px;
+
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 26px;
+    text-align: center;
+    color: #FFFFFF;
+    margin-top: 10px;
 }
 
-.delete{
-    border : 1px solid #FFFFFF;
-    width: 99px;
-    height: 26px;
+.edit{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 258px;
+    height: 38px;
+    left: 620px;
+    top: 575px;
+    gap: 40px;
+    background: rgba(6, 68, 112, 0.7);
+    border-radius: 20px;
+
     font-weight: 700;
     font-size: 24px;
     line-height: 26px;
@@ -308,4 +349,214 @@
     color: #FFFFFF;
     margin-top: 10px;
     cursor : pointer;
+}
+
+.delete{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 258px;
+    height: 38px;
+    left: 920px;
+    top: 575px;
+    gap: 40px;
+    background: rgba(6, 68, 112, 0.7);
+    border-radius: 20px;
+
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 26px;
+    text-align: center;
+    color: #FFFFFF;
+    margin-top: 10px;
+    cursor : pointer;
+}
+
+.confirmDelete{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 875px;
+    height: 38px;
+    left: 500px;
+    top: 625px;
+    gap: 40px;
+    background: rgba(6, 68, 112, 0.7);
+    border-radius: 20px;
+
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 26px;
+    text-align: center;
+    color: #FFFFFF;
+    margin-top: 10px;
+}
+
+.confirmDelete-button-oui{
+    border : 1px solid #FFFFFF;
+    background-color: #00A697;
+    width: 100px;
+    height: 30px;
+    border-radius: 20px;
+    cursor : pointer;
+}
+
+.confirmDelete-button-non{
+    border : 1px solid #FFFFFF;
+    background-color: #BA63AA;
+    width: 100px;
+    height: 30px;
+    border-radius: 20px;
+    cursor : pointer;
+}
+
+
+.feedback-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 800px;;
+  box-sizing: border-box;
+  align-items: center;
+}
+
+.feedback-user{
+  margin-top: 10px;
+  margin-bottom: -20px;
+  font-size:20px;
+  width: 1100px;
+  height: 45px;
+  background-size: cover;
+}
+
+.feedback-text {
+  width: 1100px;
+  font-weight: 400;
+  text-align: left;
+  color: #FFFFFF;
+  font-size: 20px;
+  line-height: 1.5; 
+  overflow-y: auto; 
+  max-height: 150px;
+  height: 250px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  margin-bottom: -20px;
+}
+
+.feedback-rate {
+  display: flex; 
+  width: 1100px;
+  justify-content: left;
+  align-items: center;
+  gap: 850px;
+}
+
+
+.feedback-form {
+  border: 1px solid #FFFFFF; 
+  background-color: rgba(186, 99, 170, 0.2); 
+  padding: 20px; 
+  border-radius: 50px; 
+  width: 1200px;
+  margin: auto; 
+  text-align: center; 
+  margin-bottom: 50px; 
+}
+
+.feedback-list {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px;
+  width: 1280px;
+  color: #FFFFFF;
+}
+
+.feedback {
+  width: 1200px;
+  height: 220px;
+  border: 1px solid #FFFFFF;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  color: #FFFFFF;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  justify-content: flex-start;
+  align-items: center;
+  border-radius: 50px;
+}
+
+.comment-feedback {
+  width: 1150px;
+  height: 150px;
+  font-size: 16px;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: none;
+  border-radius: 30px;
+  background-color: rgba(255, 255, 255, 0.2); 
+  color: #FFFFFF; 
+  resize: none; 
+  overflow: auto;
+  overflow-wrap: break-word;
+}
+
+.rating {
+  direction: rtl;
+  unicode-bidi: bidi-override;
+  display: inline-block;
+  font-size: 2rem;
+}
+
+.rating input {
+  display: none;
+}
+
+.rating label {
+  color: #ddd;
+  cursor: pointer;
+  font-size: 2rem;
+}
+
+.rating input:checked ~ label,
+.rating input:checked ~ label ~ label {
+  color: #f5b301;
+}
+
+.rating label:hover,
+.rating label:hover ~ label {
+  color: #f5b301;
+}
+
+.submit-feedback, .delete-feedback {
+  width: 100px;
+  height: 30px;
+  border-radius: 20px;
+  cursor: pointer;
+  background-color: #BA63AA;
+  display: flex; 
+  justify-content: center; 
+  align-items: center;
+}
+
+.submit-feedback{
+  color: aliceblue;
+  margin: auto;
+
+}
+
+.rating span {
+  cursor: pointer;
+}
+
+.rating .checked {
+  color: #f5b301;
 }

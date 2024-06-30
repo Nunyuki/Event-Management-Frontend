@@ -23,5 +23,4 @@ export class RegistrationService {
     deleteRegistration(id: string): Observable<any> {
         return this.http.delete(`${this.registrationsUrl}/${id}`);
     }
-
 }
