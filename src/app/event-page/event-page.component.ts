@@ -233,7 +233,7 @@ export class EventPageComponent {
   }
 
   isUserInList(userId: string): boolean {
-    return this.allUsers.some((user: any) => user.id === userId);
+    return this.allUsersEvent.some((user: any) => user.id === userId);
   }
 
   getFeedbackUser(userId: string): string {
