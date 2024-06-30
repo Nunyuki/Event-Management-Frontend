@@ -32,6 +32,7 @@ export class EventPageComponent {
   feedbacks: any = [];
   feedbackBool: boolean = false;
   allUsers: any = [];
+  allUsersEvent: any = [];
   alreadyFeedback: boolean = false;
   confirmDeleteFeedback: boolean = false;
 
@@ -211,7 +212,7 @@ export class EventPageComponent {
     this.UserService.getAllUsers().subscribe({
       next: (data: any) => {
         console.log('Utilisateurs récupérés GETALLUSERS', data);
-        /*this.allUsers = data;*/
+        this.allUsers = data;
       },
       error: (error) => {
         console.error('Erreur dans la récupération des utilisateurs', error);
@@ -223,7 +224,7 @@ export class EventPageComponent {
     this.UserService.getAllUsersByEvent(this.eventid).subscribe({
       next: (data: any) => {
         console.log('Utilisateurs récupérés GETALLUSERSBYEVENT', data);
-        this.allUsers = data;
+        this.allUsersEvent = data;
       },
       error: (error) => {
         console.error('Erreur dans la récupération des utilisateurs', error);
