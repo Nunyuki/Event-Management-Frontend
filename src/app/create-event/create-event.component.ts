@@ -50,7 +50,7 @@ export class CreateEventComponent {
   });
 
   formCategory: FormGroup = this.fb.group({
-    categoryName: [''],
+    categoryName: ['', Validators.required],
     imagePath: ['', Validators.required],
   });
 
@@ -269,6 +269,4 @@ export class CreateEventComponent {
       this.errorMessage = 'Veuillez remplir tous les champs';
     }
   }
-
-
 }

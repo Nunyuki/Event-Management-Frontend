@@ -11,8 +11,8 @@ export class FeedbackService {
 
     constructor(private http: HttpClient) { }
 
-    getFeedbacks(): Observable<Feedback[]> {
-        return this.http.get<Feedback[]>(`${this.feedbackUrl}`);
+    getFeedbacks(eventid: string): Observable<Feedback[]> {
+        return this.http.get<Feedback[]>(`${this.feedbackUrl}/${eventid}`);
     }
 
     createFeedback(feedback :Feedback): Observable<any> {

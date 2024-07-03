@@ -63,7 +63,7 @@ export class AllCategoryEventComponent {
         this.eventService.searchEvents(query, filter).subscribe({
           next: (data: any) => {
             console.log('Evénements récupérés', data);
-            this.events = data;
+            this.events = data.reverse();
           },
           error: (error) => {
             console.error('Erreur dans la récupération des événements', error);
@@ -73,7 +73,7 @@ export class AllCategoryEventComponent {
         this.eventService.getEvents().subscribe({
           next: (data: any) => {
             console.log('Evénements récupérés', data);
-            this.events = data;
+            this.events = data.reverse();
           },
           error: (error) => {
             console.error('Erreur dans la récupération des événements', error);
@@ -113,7 +113,7 @@ export class AllCategoryEventComponent {
       this.eventService.getEvents().subscribe({
         next: (data: any) => {
           console.log('Evénements récupérés', data)
-          this.events = data;
+          this.events = data.reverse();
         },
         error: (error) => {
           console.error('Erreur dans la récupération des événements', error);
@@ -178,5 +178,4 @@ export class AllCategoryEventComponent {
       }
     });
   }
-
 }

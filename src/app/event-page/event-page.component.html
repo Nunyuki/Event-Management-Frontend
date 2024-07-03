@@ -51,14 +51,14 @@
   </div>
 
   <div>
-    <div *ngIf="full===true" class="button-full"> COMPLET </div>
+    <div *ngIf="full===true && feedbackBool === false" class="button-full"> COMPLET </div>
   </div>
 
-  <div class="button" *ngIf="creator===false && full===false || registered===true">
-    <div class="register-user" *ngIf="registered===false" (click)="registration()">Réserver</div>
+  <div class="button" *ngIf="creator===false && feedbackBool===false">
+    <div class="register-user" *ngIf="registered===false && full===false" (click)="registration()">Réserver</div>
     <div class="register-user" *ngIf="registered===true" (click)="unregistration()">Désinscrire</div>
   </div>
-  <div *ngIf="creator===true">
+  <div *ngIf="creator===true && feedbackBool===false">
     <div class="edit" (click)="redirectToCreatePage()">Modifier</div>
     <div class="delete" (click)="confirmDelete()">Supprimer</div>
   </div>
@@ -70,33 +70,34 @@
   </div>
 
   <div class="feedback-container">
-    <div class="feedback-form" *ngIf="feedbackBool === true && alreadyFeedback === false && isUserInList(userid)">
+    <div class="feedback-form" *ngIf="feedbackBool === true && alreadyFeedback === false && registered">
       <form [formGroup]="formFeedback" (ngSubmit)="createFeedback()">
         <textarea class="comment-feedback" id="create-feedback" formControlName="comment"
           placeholder="Laisser un commentaire"></textarea>
         <div id="create-rating" class="rating">
           <input type="radio" name="rate" id="star1" formControlName="rate" [value]="5">
-          <label for="star1" title="1 star">&#9733;</label>
+          <label for="star1">&#9733;</label>
 
           <input type="radio" name="rate" id="star2" formControlName="rate" [value]="4">
-          <label for="star2" title="2 stars">&#9733;</label>
+          <label for="star2">&#9733;</label>
 
           <input type="radio" name="rate" id="star3" formControlName="rate" [value]="3">
-          <label for="star3" title="3 stars">&#9733;</label>
+          <label for="star3">&#9733;</label>
 
           <input type="radio" name="rate" id="star4" formControlName="rate" [value]="2">
-          <label for="star4" title="4 stars">&#9733;</label>
+          <label for="star4">&#9733;</label>
 
           <input type="radio" name="rate" id="star5" formControlName="rate" [value]="1">
-          <label for="star5" title="5 stars">&#9733;</label>
+          <label for="star5">&#9733;</label>
         </div>
 
         <button class="submit-feedback" type="submit">Envoyer</button>
       </form>
     </div>
+    <div *ngIf="errorMessage" class="errors-message">{{ errorMessage }}</div>
     <div class="feedback-list" *ngIf="feedbackBool===true">
       <div *ngFor="let feedback of feedbacks" class="feedback">
-        <div class="feedback-user">{{ getFeedbackUser(feedback.eventUserId) }}</div>
+        <div class="feedback-user">{{ feedback.userPseudo }}</div>
         <div class="feedback-text">{{ feedback.comment }}</div>
 
         <div class="feedback-rate">
@@ -107,7 +108,7 @@
             <span [class]="getStarClass(feedback.rate, 2)">&#9733;</span>
             <span [class]="getStarClass(feedback.rate, 1)">&#9733;</span>
           </div>
-          <div *ngIf="canDelete(feedback.eventUserId)===true && feedback.eventUserId===userid">
+          <div *ngIf="canDelete(feedback.eventUserId)===true && feedback.eventUserId===user.id">
             <div class="delete-feedback" (click)="deleteFeedback(feedback.id)">Supprimer</div>
           </div>
         </div>

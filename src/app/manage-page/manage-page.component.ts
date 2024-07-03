@@ -33,7 +33,7 @@ export class ManagePageComponent {
         this.eventService.getEventsByRegistration(this.user.id).subscribe({
           next: (data: any) => {
             console.log('Evénements récupérés par inscription', data);
-            this.events = data;
+            this.events = data.reverse();
           },
           error: (error) => {
             console.error('Erreur dans la récupération des événements', error);
@@ -43,7 +43,7 @@ export class ManagePageComponent {
         this.eventService.searchEvents(this.user.pseudo, 'creator').subscribe({
           next: (data: any) => {
             console.log('Evénements récupérés créés par l\'utilisateur', data);
-            this.events = data;
+            this.events = data.revese();
           },
           error: (error) => {
             console.error('Erreur dans la récupération des événements', error);

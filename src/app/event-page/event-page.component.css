@@ -196,9 +196,9 @@
   align-items: flex-start;
   padding: 30px 14px;
   position: absolute;
-  width: 308px;
-  height: 276px;
-  left: 80px;
+  width: 330px;
+  height: 280px;
+  left: 70px;
   top: 478px;
   background: rgba(186, 99, 170, 0.2);
   border-radius: 20px;
@@ -209,7 +209,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: 280px;
+  width: 300px;
   height: 216px;
   gap: 20px;
 }
@@ -218,18 +218,19 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  width: 280px;
+  width: 335px;
   height: 35px;
   gap: 10px;
 }
 
 .data-text {
-  width: 250px;
+  width: 290px;
   height: 20px;
   font-weight: 400;
   font-size: 16px;
   line-height: 18px;
   color: #FFFFFF;
+  overflow-wrap: break-word;
 }
 
 .inscription-icon, .date-icon, .creator-icon, .createOn-icon{
@@ -559,4 +560,16 @@
 
 .rating .checked {
   color: #f5b301;
+}
+
+.errors-message {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 499px;
+  top: 1122px;
+  width: 300px;
+  color: #ef8fc4;
 }
